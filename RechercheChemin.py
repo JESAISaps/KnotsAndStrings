@@ -1,3 +1,5 @@
+from BaladeLabyrinthe import creerDicoLiens, ASSODIRECTIONNOMBRE
+
 G:dict = { 0: ("Bienvenue dans ce monde!", [(1, "Nord"), (2, "Est"), (3, "Sud")]),
                1: ("Vous êtes dans la salle à manger.", [(0, "Sud"), (4, "Est")]),
                2: ("Vous êtes sur la terrasse, sous le préau.", [(5, "Est"), (0, "Ouest")]),
@@ -44,14 +46,14 @@ def PrintCreateGPS(graph, chemin:list):
     #print(f"Graph: {graph}")
     print(f"Depart, vous apparaissez dans le monde, voila comment sortir: ")
     for i in range(len(chemin)-1):
-        print(dict(graph[chemin[i]][1])[chemin[i+1]]) # On va chercher la position du prochain noeud dans le graphe, tres neste.
-    print("Sorti !")
+        print(ASSODIRECTIONNOMBRE[dict(graph[chemin[i]][1])[chemin[i+1]]]) # On va chercher la position du prochain noeud dans le graphe, tres neste.
+    #print("Sorti !")
 
 def test():
     flag = True
     depart = 0
     arrivee = 6
-    print(CheminToGo(G, depart, arrivee))
+    #print(CheminToGo(G, depart, arrivee))
     PrintCreateGPS(G, CheminToGo(G, depart, arrivee))
     flag = flag and CheminToGo(G, depart, arrivee)
     return flag

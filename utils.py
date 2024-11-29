@@ -1,4 +1,4 @@
-def arcsortant(graphe,sommet)-> list:
+def successeurs(graphe,sommet)-> list[int]:
     liste =[]
     for element in graphe[sommet][1]:
            liste.append(element[0])
@@ -14,21 +14,21 @@ g = { 0: ("Bienvenue dans ce monde!", [(1, "Nord"), (2, "Est"), (3, "Sud")]),
 
 def accessible(graphe,sommet1):
     reponse=[sommet1]
-    sommetvus=arcsortant(graphe,sommet1)
+    sommetvus=successeurs(graphe,sommet1)
     while sommetvus != []:
          voisin=sommetvus.pop()
          if voisin in reponse :
               pass
          else :
               reponse.append(voisin)
-              sommetvus += arcsortant(graphe,voisin)
+              sommetvus += successeurs(graphe,voisin)
     return reponse
   
 def accessiblechemins(graphe,sommet1):
     sommetavant=sommet1
     reponse=[sommet1]
     chemins=[]
-    sommetvus=arcsortant(graphe,sommet1)
+    sommetvus=successeurs(graphe,sommet1)
     while sommetvus != []:
          voisin=sommetvus.pop()
          if voisin in reponse :
@@ -36,7 +36,7 @@ def accessiblechemins(graphe,sommet1):
          else :
               reponse.append(voisin)
               chemins.append([voisin,sommetavant])
-              sommetvus += arcsortant(graphe,voisin)
+              sommetvus += successeurs(graphe,voisin)
               sommetavant=voisin
     return reponse, chemins
 
