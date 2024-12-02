@@ -1,0 +1,13 @@
+digraph g{ 
+"Entree"->"Salle à manger"[label = "Nord"]
+"Entree"->"Terrasse"[label = "Est"]
+"Entree"->"Route"[label = "Sud"]
+"Salle à manger"->"Entree"[label = "Sud"]
+"Salle à manger"->"Garde-manger"[label = "Est"]
+"Terrasse"->"Jardin."[label = "Est"]
+"Terrasse"->"Entree"[label = "Ouest"]
+"Route"->"Entree"[label = "Nord"]
+"Route"->"Sortie"[label = "Est"]
+"Garde-manger"->"Salle à manger"[label = "Ouest"]
+"Jardin."->"Terrasse"[label = "Ouest"]
+}

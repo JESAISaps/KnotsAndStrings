@@ -1,16 +1,21 @@
+import json
+
+G = { 0: ("Entree", [(1, "Nord"), (2, "Est"), (3, "Sud")]),
+      1: ("Salle à manger", [(0, "Sud"), (4, "Est")]),
+      2: ("Terrasse", [(5, "Est"), (0, "Ouest")]),
+      3: ("Route", [(0, "Nord"), (6, "Est")]),
+      4: ("Garde-manger", [(1, "Ouest")]),
+      5: ("Jardin.", [(2, "Ouest")]),
+      6: ("Sortie", [])}
+
+
+ASSODIRECTIONNOMBRE = {"Nord":1, "Sud":2, "Est":3, "Ouest":4}
+
 def successeurs(graphe,sommet)-> list[int]:
     liste =[]
     for element in graphe[sommet][1]:
            liste.append(element[0])
-    return liste 
-
-g = { 0: ("Bienvenue dans ce monde!", [(1, "Nord"), (2, "Est"), (3, "Sud")]),
-      1: ("Vous êtes dans la salle à manger.", [(0, "Sud"), (4, "Est")]),
-      2: ("Vous êtes sur la terrasse, sous le préau.", [(5, "Est"), (0, "Ouest")]),
-      3: ("Vous êtes sur la route, devant la maison.", [(0, "Nord"), (6, "Est")]),
-      4: ("Vous vous trouvez dans le garde-manger.", [(1, "Ouest")]),
-      5: ("Vous êtes dans le jardin.", [(2, "Ouest")]),
-      6: ("Vous êtes sorti du monde, bravo!", [])}
+    return liste
 
 def accessible(graphe,sommet1):
     reponse=[sommet1]
@@ -129,4 +134,9 @@ def test():
 
 
 if __name__ == "__main__":
-   test()
+    #with open("data.json", "w") as file:
+    #    json.dump(G, file)
+
+    with open("data.json", "r") as file:
+        g = json.load(file)
+        print(g)
