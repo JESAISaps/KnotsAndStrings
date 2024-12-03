@@ -1,9 +1,5 @@
 import utils
-import LabyTest
-
-
-ASSODIRECTIONNOMBRE = {"Nord":1, "Sud":2, "Est":3, "Ouest":4}
-
+from utils import G, ASSODIRECTIONNOMBRE
 
 def creerDicoLiens(listechoix:list[tuple[int, str]]):
     """
@@ -28,9 +24,9 @@ def creerChaineAfficherEtiquettesAvecNumero(dicoLiens):
 
 
 
-def balade(graphe,entree):
+def visite(graphe,entree):
     caseActuelle = entree
-    choix = "-1"
+    choix = "-2"
     while utils.successeurs(graphe,caseActuelle) != []:
 
         dicoliens=creerDicoLiens(graphe[caseActuelle][1])
@@ -41,19 +37,9 @@ def balade(graphe,entree):
         
         caseActuelle = dicoliens[int(choix)][0]
         print(graphe[caseActuelle][0]+"\n")
-        choix="-1"
+        choix="-2"
 
     return "Bravo"
 
-g = { 0: ("Bienvenue dans ce monde!", [(1, "Nord"), (2, "Est"), (3, "Sud")]),
-      1: ("Vous êtes dans la salle à manger.", [(0, "Sud"), (4, "Est")]),
-      2: ("Vous êtes sur la terrasse, sous le préau.", [(5, "Est"), (0, "Ouest")]),
-      3: ("Vous êtes sur la route, devant la maison.", [(0, "Nord"), (6, "Est")]),
-      4: ("Vous vous trouvez dans le garde-manger.", [(1, "Ouest")]),
-      5: ("Vous êtes dans le jardin.", [(2, "Ouest")]),
-      6: ("Vous êtes sorti du monde, bravo!", [])}
-
-
-
 if __name__ == "__main__":
-    print(balade(LabyTest.g,0))
+    print(visite(G,0))

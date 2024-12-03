@@ -1,4 +1,4 @@
-from BaladeLabyrinthe import creerDicoLiens, ASSODIRECTIONNOMBRE
+from utils import ASSODIRECTIONNOMBRE
 
 G:dict = { 0: ("Bienvenue dans ce monde!", [(1, "Nord"), (2, "Est"), (3, "Sud")]),
                1: ("Vous êtes dans la salle à manger.", [(0, "Sud"), (4, "Est")]),
