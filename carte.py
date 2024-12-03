@@ -1,6 +1,4 @@
-from utils import successeurs
-from utils import G 
-
+from utils import G
 
 def CreateLignInDot(gauche,droite,etiquette):
     text = f'"{gauche}" -> "{droite}" [label = "{etiquette}"] [fontcolor=brown]'

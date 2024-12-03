@@ -1,6 +1,7 @@
 from copy import deepcopy
-from RechercheChemin import accessiblechemins
-from utils import G
+from utils import accessiblechemins
+if __name__ == "__main__":
+    from utils import G
 
 def GetExits(graph):
     return {key for key in graph if graph[key][1] == []}

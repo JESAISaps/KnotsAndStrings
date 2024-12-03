@@ -1,4 +1,4 @@
-from utils import ASSODIRECTIONNOMBRE
+from utils import ASSODIRECTIONNOMBRE, accessiblechemins
 
 G:dict = { 0: ("Bienvenue dans ce monde!", [(1, "Nord"), (2, "Est"), (3, "Sud")]),
                1: ("Vous êtes dans la salle à manger.", [(0, "Sud"), (4, "Est")]),
@@ -7,21 +7,6 @@ G:dict = { 0: ("Bienvenue dans ce monde!", [(1, "Nord"), (2, "Est"), (3, "Sud")]
                4: ("Vous vous trouvez dans le garde-manger.", [(1, "Ouest")]),
                5: ("Vous êtes dans le jardin.", [(2, "Ouest")]),
                6: ("Vous êtes sorti du monde, bravo!", [])}
-
-def accessiblechemins(G,d):
-    """
-    Renvoie l'ensemble des sommets accessibles depuis d
-    """
-    monde = {d}
-    sommetsAccessibles = {sommet[0] for sommet in G[d][1]}
-    arcs = {(sommet[0],d) for sommet in G[d][1]}
-
-    while sommetsAccessibles != set():
-        nextVertex = sommetsAccessibles.pop()
-        monde.add(nextVertex)
-        sommetsAccessibles.update({sommet[0] for sommet in G[nextVertex][1] if sommet[0] not in monde})
-        arcs.update({(seenVertex[0], nextVertex) for seenVertex in G[nextVertex][1] if seenVertex[0] not in monde})
-    return monde, arcs
 
 def RecontruireChemin(depart, arrivee, arcs):
     chemin = [arrivee]
@@ -33,7 +18,6 @@ def RecontruireChemin(depart, arrivee, arcs):
        chemin.insert(0, dicoArcs[chemin[0]])
 
     return chemin
-
 
 def CheminToGo(G, d, a):
     accessibleVerticises, links = accessiblechemins(G, d)
@@ -58,10 +42,5 @@ def test():
     flag = flag and CheminToGo(G, depart, arrivee)
     return flag
 
-def TestAccessiblesChemins():
-    
-    print(accessiblechemins(G,0))
-
 if __name__ == "__main__":
     assert test()
-    #TestAccessiblesChemins()
