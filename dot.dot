@@ -1,0 +1,13 @@
+digraph g{ 
+"Entree" -> "Salle a manger" [label = "Nord"] [fontcolor=brown]
+"Entree" -> "Terrasse" [label = "Est"] [fontcolor=brown]
+"Entree" -> "Route" [label = "Sud"] [fontcolor=brown]
+"Salle a manger" -> "Entree" [label = "Sud"] [fontcolor=brown]
+"Salle a manger" -> "Garde-manger" [label = "Est"] [fontcolor=brown]
+"Terrasse" -> "Jardin" [label = "Est"] [fontcolor=brown]
+"Terrasse" -> "Entree" [label = "Ouest"] [fontcolor=brown]
+"Route" -> "Entree" [label = "Nord"] [fontcolor=brown]
+"Route" -> "Sortie" [label = "Est"] [fontcolor=brown]
+"Garde-manger" -> "Salle a manger" [label = "Ouest"] [fontcolor=brown]
+"Jardin" -> "Terrasse" [label = "Ouest"] [fontcolor=brown]
+}
