@@ -3,7 +3,7 @@ import json
 G = { 0: ("Entree", [(1, "Nord"), (2, "Est"), (3, "Sud")]),
       1: ("Salle a manger", [(0, "Sud"), (4, "Est")]),
       2: ("Terrasse", [(5, "Est"), (0, "Ouest")]),
-      3: ("Route", [(0, "Nord"), (6, "Est")], [7, "Ouest"]),
+      3: ("Route", [(0, "Nord"), (6, "Est"), [7, "Ouest"]]),
       4: ("Garde-manger", [(1, "Ouest")]),
       5: ("Jardin", [(2, "Ouest")]),
       6: ("Sortie", []),

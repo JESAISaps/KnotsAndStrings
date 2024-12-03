@@ -13,6 +13,10 @@ def creerDicoLiens(listechoix:list[tuple[int, str]]) -> dict[str, list[tuple[int
     return dico
 
 def creerChaineAfficherEtiquettesAvecNumero(dicoLiens) -> str:
+    """
+    Returns formated string from dict of links
+    created by creerDicoLiens
+    """
     chaine = "Chemins possibles : \n"
     for key in dicoLiens:
         chaine += str(key) + " : "
@@ -20,6 +24,12 @@ def creerChaineAfficherEtiquettesAvecNumero(dicoLiens) -> str:
     return chaine
 
 def visite(graphe,entree) -> None:
+    """
+    Routine de visite du labyrinthe, attends 
+    les input de l'utilisateur dans la console
+    Possibilité d'utiliser pipe pour resoudre le labyrinthe
+    """
+
     caseActuelle = entree
     choix = "" # On met choix a un truc invalide par defaut.
     while successeurs(graphe,caseActuelle) != []:
@@ -27,6 +37,7 @@ def visite(graphe,entree) -> None:
         dicoliens=creerDicoLiens(graphe[caseActuelle][1])
         chaineaffichee= creerChaineAfficherEtiquettesAvecNumero(dicoliens)
 
+        # Boucle tant que le choix est invalide.
         while choix.isdigit() == False or int(choix) not in dicoliens.keys():
             choix=input("Quel chemin voulez vous prendre? "+chaineaffichee)
         

@@ -1,12 +1,4 @@
-from utils import ASSODIRECTIONNOMBRE, accessiblechemins
-
-G:dict = { 0: ("Bienvenue dans ce monde!", [(1, "Nord"), (2, "Est"), (3, "Sud")]),
-               1: ("Vous êtes dans la salle à manger.", [(0, "Sud"), (4, "Est")]),
-               2: ("Vous êtes sur la terrasse, sous le préau.", [(5, "Est"), (0, "Ouest")]),
-               3: ("Vous êtes sur la route, devant la maison.", [(0, "Nord"), (6, "Est")]),
-               4: ("Vous vous trouvez dans le garde-manger.", [(1, "Ouest")]),
-               5: ("Vous êtes dans le jardin.", [(2, "Ouest")]),
-               6: ("Vous êtes sorti du monde, bravo!", [])}
+from utils import ASSODIRECTIONNOMBRE, accessiblechemins, G
 
 def RecontruireChemin(depart, arrivee, arcs):
     chemin = [arrivee]
