@@ -1,5 +1,5 @@
 from utils import successeurs
-from GrapheExamples import G 
+from utils import G 
 
 
 def CreateLignInDot(gauche,droite,etiquette):
