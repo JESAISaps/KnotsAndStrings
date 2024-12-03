@@ -8,7 +8,6 @@ G = { 0: ("Entree", [(1, "Nord"), (2, "Est"), (3, "Sud")]),
       5: ("Jardin.", [(2, "Ouest")]),
       6: ("Sortie", [])}
 
-
 ASSODIRECTIONNOMBRE = {"Nord":1, "Sud":2, "Est":3, "Ouest":4}
 
 def successeurs(graphe,sommet)-> list[int]:
@@ -16,18 +15,6 @@ def successeurs(graphe,sommet)-> list[int]:
     for element in graphe[sommet][1]:
            liste.append(element[0])
     return liste
-
-def accessible(graphe,sommet1):
-    reponse=[sommet1]
-    sommetvus=successeurs(graphe,sommet1)
-    while sommetvus != []:
-         voisin=sommetvus.pop()
-         if voisin in reponse :
-              pass
-         else :
-              reponse.append(voisin)
-              sommetvus += successeurs(graphe,voisin)
-    return reponse
 
 def accessiblechemins(G,d):
     """

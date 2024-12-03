@@ -1,17 +1,15 @@
-import utils
-from utils import G, ASSODIRECTIONNOMBRE
+from utils import ASSODIRECTIONNOMBRE, successeurs
+if __name__ == "__main__":
+    from utils import G
 
 def creerDicoLiens(listechoix:list[tuple[int, str]]):
     """
     Renvoie un dictionnaire qui associe le choix de l'utilisateur à une case parmis celles accessibles à leur niveau 
     """
     dico={}
-    #compteur = 1
     for element in listechoix:
         dico[ASSODIRECTIONNOMBRE[element[1]]]= element
-        #compteur += 1
     return dico
-
 
 def creerChaineAfficherEtiquettesAvecNumero(dicoLiens):
     chaine = "Chemins possibles : \n"
@@ -22,12 +20,10 @@ def creerChaineAfficherEtiquettesAvecNumero(dicoLiens):
         chaine += dicoLiens[key][1] + "\n"
     return chaine
 
-
-
 def visite(graphe,entree):
     caseActuelle = entree
     choix = "-2"
-    while utils.successeurs(graphe,caseActuelle) != []:
+    while successeurs(graphe,caseActuelle) != []:
 
         dicoliens=creerDicoLiens(graphe[caseActuelle][1])
         chaineaffichee= creerChaineAfficherEtiquettesAvecNumero(dicoliens)
