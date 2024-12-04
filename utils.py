@@ -7,8 +7,8 @@ G = { 0: ("Entree", [(1, "Nord"), (2, "Est"), (3, "Sud")]),
       4: ("Garde-manger", [(1, "Ouest")]),
       5: ("Jardin", [(2, "Ouest")]),
       6: ("Sortie", []),
-      7 : ("Trou", [(8, "Caca")]),
-      8 : ("Troutrou", [(7, "Pipi")])}
+      7: ("Trou", [(8, "Caca")]),
+      8: ("Troutrou", [(7, "Pipi")])}
 
 
 G1 = { 0: ("Bienvenue dans ce monde!", [(1, "Nord"), (2, "Est"), (3, "Sud")]),
