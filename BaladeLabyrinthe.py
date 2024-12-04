@@ -36,13 +36,12 @@ def visite(graphe,entree) -> None:
 
         dicoliens=creerDicoLiens(graphe[caseActuelle][1])
         chaineaffichee= creerChaineAfficherEtiquettesAvecNumero(dicoliens)
-
+        print(f'\nPosition : {graphe[caseActuelle][0]} \n')
         # Boucle tant que le choix est invalide.
         while choix.isdigit() == False or int(choix) not in dicoliens.keys():
             choix=input("Quel chemin voulez vous prendre? "+chaineaffichee)
         
         caseActuelle = dicoliens[int(choix)][0]
-        print(graphe[caseActuelle][0]+"\n")
         choix=""
 
     return "Bravo"

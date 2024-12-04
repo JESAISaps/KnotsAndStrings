@@ -11,6 +11,6 @@ digraph g{
 "Route" -> "Trou" [label = "Ouest"] [fontcolor=brown]
 "Garde-manger" -> "Salle a manger" [label = "Ouest"] [fontcolor=brown]
 "Jardin" -> "Terrasse" [label = "Ouest"] [fontcolor=brown]
-"Trou" -> "Troutrou" [label = "Caca"] [fontcolor=brown]
-"Troutrou" -> "Trou" [label = "Pipi"] [fontcolor=brown]
+"Trou" -> "Perdu" [label = "Nord"] [fontcolor=brown]
+"Perdu" -> "Trou" [label = "Sud"] [fontcolor=brown]
 }
