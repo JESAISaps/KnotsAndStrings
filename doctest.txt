@@ -1,0 +1,34 @@
+Doctests for KnotsAndStrings program
+
+    Import du graph pour les tests
+>>> from utils import G
+
+-----------
+Tests de Reconstruire Chemin:
+
+>>> from RechercheChemin import ReconstruireChemin
+
+>>> ReconstruireChemin(0,6,{(6,1),(1,5),(5,3),(3,0)})
+[0, 3, 5, 1, 6]
+>>> ReconstruireChemin(0,3,{(6,1),(1,5),(5,3),(3,0)})
+[0, 3]
+>>> ReconstruireChemin(3,1,{(6,1),(1,5),(5,3),(3,0)})
+[3, 5, 1]
+
+-----------
+Tests du GPS pour maintenance:
+
+>>> from RechercheChemin import CreateGPS
+
+>>> CreateGPS(G, [0,1,4])
+'Depart, vous apparaissez dans le monde, voila comment sortir:\n1\n3'
+
+-----------
+Tests de GetExits:
+
+>>> from SortieRatee import GetExits
+
+>>> {4,5} == GetExits({0:("", [(1,"eeee")]), 1:("", [(0,"eeee")]), 2:("", [(0,"eeee")]), 3:("", [(4,"eeee")]), 4:("", []), 5:("", [])})
+True
+
+On utilise cette notation pour gerer le desordre dans les sets
