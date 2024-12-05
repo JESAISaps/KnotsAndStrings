@@ -1,4 +1,5 @@
 from utils import ASSODIRECTIONNOMBRE, successeurs
+
 if __name__ == "__main__":
     from utils import G
 

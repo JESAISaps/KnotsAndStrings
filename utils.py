@@ -22,6 +22,8 @@ G1 = { 0: ("Bienvenue dans ce monde!", [(1, "Nord"), (2, "Est"), (3, "Sud")]),
 
 ASSODIRECTIONNOMBRE = {"Nord":1, "Sud":2, "Est":3, "Ouest":4}
 VIRTUALEXITNUMBER = 314159265359
+DOTPATH = "./Dots/dot.dot"
+JSONPATH = "./data/data.json"
 
 def successeurs(graphe,sommet)-> list[int]:
     liste =[]
@@ -59,10 +61,20 @@ def IsVertexAccessible(G, d, a):
        return False, accessibleVerticises
     return True, RecontruireChemin(a,d, links)
 
-if __name__ == "__main__":
-    #with open("data.json", "w") as file:
-    #    json.dump(G, file)
+def GetAllGraphsInData():
+    """
+    Returns all graphs in data.json. First list is the list of names
+    Keys from inside the graph are converted back to int
+    """
 
-    with open("data.json", "r") as file:
-        g = json.load(file)
-        print(g)
+    with open(JSONPATH, "r") as file:
+        g = json.load(file, object_hook=lambda d: {int(k) if k.lstrip('-').isdigit() else k: v for k, v in d.items()})
+    return g
+
+def GetGraphInData(graphName:str):
+    return GetAllGraphsInData()[graphName]
+
+if __name__ == "__main__":
+
+    print(GetAllGraphsInData())
+    print(GetGraphInData("G"))
