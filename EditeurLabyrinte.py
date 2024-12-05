@@ -1,34 +1,47 @@
 def CreationLabyrinte(nombreSommets : int):
     dico={}
-    listeSommets=getNomSommets(nombreSommets)
+    listeSommets=getListeNomsSommets(nombreSommets)
     for i in range(nombreSommets):
         dico[i]=(listeSommets[i],[])
     for sommet in dico.keys():
         nombreaccessibles = getNombreSommetsAccessibles(dico[sommet][0])
         for _ in range(nombreaccessibles):
-            dico[sommet]=getSommetsAccessibles(dico[sommet][0],nombreaccessibles)
-
-#VERIFIER LE TYPE DES SOMMET ACCESSIBLES !!!!!!!!
+            dico[sommet]=getSommetsAccessibles(dico[sommet][0],nombreaccessibles,listeSommets)
+    return dico
 
 def getNombreSommets():
-    return int(input("Combien de sommets dans votre graphe? \n"))
+    result=""
+    while result.isdigit() == False :
+        result = input("Combien de sommets dans votre graphe? \n")
+    return int(result)
 
-def getNomSommets(nombresommets):
+def getListeNomsSommets(nombresommets:int):
     list=[]
+    acces=""
     for i in range(nombresommets):
-        list.append(input(f'Nom sommet {i} ?'))
+        while acces in list:
+            acces = input(f'Nom sommet {i} ?')
+        list.append(acces)
     return list
 
 def getEntree():
     return input("Ou voulez vous entrer? \n")
                       
 def getNombreSommetsAccessibles(etiquetteSommet):
-    return int(input(f'Combiens de sommet accessibles depuis {etiquetteSommet} ? \n'))
+    result=""
+    while result.isdigit() == False:
+        result= (input(f'Combiens de sommet accessibles depuis {etiquetteSommet} ? \n'))
+    return int(result)
 
-def getSommetsAccessibles(sommet, nombreaccessibles):
+#TODO Verifier etiquette sommet vide
+
+def getSommetsAccessibles(sommet : str, nombreaccessibles : int, listesommet : list):
     list=[]
+    acces= ""
     for i in range(nombreaccessibles):
-        list.append(input(f'Quel sommet sera accessible depuis {sommet} ? \n'))
+        while acces not in listesommet:
+            acces=input(f'Quel sommet sera accessible depuis {sommet} ? \n')
+        list.append(acces)
     return list
 
 
