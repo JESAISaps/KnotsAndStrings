@@ -21,6 +21,7 @@ G1 = { 0: ("Bienvenue dans ce monde!", [(1, "Nord"), (2, "Est"), (3, "Sud")]),
 
 
 ASSODIRECTIONNOMBRE = {"Nord":1, "Sud":2, "Est":3, "Ouest":4}
+VIRTUALEXITNUMBER = 314159265359
 
 def successeurs(graphe,sommet)-> list[int]:
     liste =[]

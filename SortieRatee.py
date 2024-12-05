@@ -1,5 +1,5 @@
 from copy import deepcopy
-from utils import accessiblechemins
+from utils import accessiblechemins, VIRTUALEXITNUMBER
 if __name__ == "__main__":
     from utils import G
 
@@ -12,7 +12,7 @@ def CreateGraphWithUniqueExit(originGraph):
     """
     graph = deepcopy(originGraph)
     exits:set = GetExits(graph)
-    uniqueExit = -1
+    uniqueExit = VIRTUALEXITNUMBER
     for exit in exits:
         assert graph[exit][1] == []
         graph[exit][1].append((uniqueExit, "To Virtual Exit"))

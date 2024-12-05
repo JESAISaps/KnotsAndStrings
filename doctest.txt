@@ -1,9 +1,10 @@
 Doctests for KnotsAndStrings program
 
     Import du graph pour les tests
->>> from utils import G
+>>> from utils import G, VIRTUALEXITNUMBER
 
 -----------
+
 Tests de Reconstruire Chemin:
 
 >>> from RechercheChemin import ReconstruireChemin
@@ -17,6 +18,7 @@ Tests de Reconstruire Chemin:
 
 
 -----------
+
 Tests du GPS pour maintenance:
 
 >>> from RechercheChemin import CreateGPS
@@ -26,6 +28,7 @@ Tests du GPS pour maintenance:
 
 
 -----------
+
 Tests de GetExits:
 
 >>> from SortieRatee import GetExits
@@ -33,4 +36,30 @@ Tests de GetExits:
 >>> {4,5} == GetExits({0:("", [(1,"eeee")]), 1:("", [(0,"eeee")]), 2:("", [(0,"eeee")]), 3:("", [(4,"eeee")]), 4:("", []), 5:("", [])})
 True
 
-On utilise cette notation pour gerer le desordre dans les sets
+graph vide
+>>> GetExits({}) == set()
+True
+
+Cas du graphe sans sortie
+>>> GetExits({0:("", [1,"north"]), 1:("", [0, "SOutg"])}) == set()
+True
+
+On utilise cette notation pour gerer le desordre dans les sets et dico
+
+------------
+
+Test de CreateGraphWithUniqueExit:
+
+>>> from SortieRatee import CreateGraphWithUniqueExit
+
+>>> CreateGraphWithUniqueExit({0:("", [(1,"")]), 1:("",[])}) == {0:("", [(1,"")]), 1:("",[(VIRTUALEXITNUMBER,"To Virtual Exit")]), VIRTUALEXITNUMBER:("Virtual Exit", [])}
+True
+
+>>> CreateGraphWithUniqueExit({0:("",[])}) == {0:("", [(VIRTUALEXITNUMBER,"To Virtual Exit")]), VIRTUALEXITNUMBER:("Virtual Exit", [])}
+True
+
+>>> CreateGraphWithUniqueExit({}) == {VIRTUALEXITNUMBER: ('Virtual Exit', [])}
+True
+
+------------
+
