@@ -15,6 +15,7 @@ Tests de Reconstruire Chemin:
 >>> ReconstruireChemin(3,1,{(6,1),(1,5),(5,3),(3,0)})
 [3, 5, 1]
 
+
 -----------
 Tests du GPS pour maintenance:
 
@@ -22,6 +23,7 @@ Tests du GPS pour maintenance:
 
 >>> CreateGPS(G, [0,1,4])
 'Depart, vous apparaissez dans le monde, voila comment sortir:\n1\n3'
+
 
 -----------
 Tests de GetExits:
