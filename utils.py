@@ -21,6 +21,7 @@ G1 = { 0: ("Bienvenue dans ce monde!", [(1, "Nord"), (2, "Est"), (3, "Sud")]),
 
 
 ASSODIRECTIONNOMBRE = {"Nord":1, "Sud":2, "Est":3, "Ouest":4}
+ASSONOMBREDIRECTION = {1:"Nord", 2:"Sud", 3:"Est", 4:"Ouest"}
 VIRTUALEXITNUMBER = 314159265359
 DOTPATH = "./Dots/dot.dot"
 JSONPATH = "./data/data.json"

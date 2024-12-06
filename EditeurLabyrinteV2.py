@@ -8,7 +8,7 @@ G = { 0: ("Entree", [(1, "Nord"), (2, "Est"), (3, "Sud")]),
       7: ("Trou", [(8, "Nord")]),
       8: ("Perdu", [(7, "Sud")])}
 
-from utils import ASSODIRECTIONNOMBRE
+from utils import ASSODIRECTIONNOMBRE,ASSONOMBREDIRECTION
 
 def creationLabyrinte():
     G={}
@@ -26,20 +26,29 @@ def getListeNomSommets(nombresommets):
     return liste
 
         
-def getAccessiblesEtDirectionDepuisSommet(sommet,listeNomsSommets,dicoAsso):
+def getAccessiblesEtDirectionDepuisSommet(sommet,nombreSommetAccessibles,listeNomsSommets,dicoAsso, dicoAssoInverse):
     listeAcces=[]
-    for sommet in listeNomsSommets:
-        while acces not in listeNomsSommets :
+    acces=""
+    direction = ""
+    for _ in range(nombreSommetAccessibles):
+        while not acces.isdigit() or acces not in listeNomsSommets :
             acces=input(f'Quels sommet accessibles depuis {sommet}?')
         while direction not in (dicoAsso.values()):
             direction=input(f'Par quelle direction ? {getAssoBellesDirections(dicoAsso)}')
         direction =int(direction)
-        listeAcces.append(sommet,direction)
-    return sommet,direction
+        listeAcces.append(sommet,dicoAssoInverse[direction])
+    return listeAcces
 
-#faire dicoinversé pour récup les étiquettes 
+#pb ici verifier nombre sommets accessibles et faire le get nb sommet accessibles
+
+def test_AccessibleEtDirectiondepuisSommet(sommet,nombreSommetaccessibles,listeNomsSommets,dicoAsso, dicoAssoInverse):
+    print(getAccessiblesEtDirectionDepuisSommet(sommet,nombreSommetaccessibles,listeNomsSommets,dicoAsso, dicoAssoInverse))
+print(test_AccessibleEtDirectiondepuisSommet(1,2,[1,2,3],ASSODIRECTIONNOMBRE,ASSONOMBREDIRECTION))
 
 def getAssoBellesDirections(dicoAsso):
+    """
+    dicoAsso de la forme {1:"Nord"}
+    """
     direction=""
     for key in dicoAsso:
         direction+=f'{dicoAsso[key]} : {key}\n'
