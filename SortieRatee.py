@@ -37,7 +37,7 @@ def GetPossibleExit(graph):
     """
     newGraph = CreateGraphWithUniqueExit(graph)
 
-    return accessiblechemins(MirrorGraph(newGraph), -1)[0]
+    return accessiblechemins(MirrorGraph(newGraph), VIRTUALEXITNUMBER)[0]
 
 def GetImpossibleExits(graph):
     """

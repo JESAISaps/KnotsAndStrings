@@ -19,6 +19,7 @@ def getListeNomsSommets(nombresommets:int):
     list=[]
     acces=""
     for i in range(nombresommets):
+        acces = input(f'Nom sommet {i} ?')
         while acces in list:
             acces = input(f'Nom sommet {i} ?')
         list.append(acces)
@@ -33,7 +34,7 @@ def getNombreSommetsAccessibles(etiquetteSommet):
         result= (input(f'Combiens de sommet accessibles depuis {etiquetteSommet} ? \n'))
     return int(result)
 
-#TODO Verifier etiquette sommet vide
+
 
 def getSommetsAccessibles(sommet : str, nombreaccessibles : int, listesommet : list):
     list=[]
@@ -43,6 +44,7 @@ def getSommetsAccessibles(sommet : str, nombreaccessibles : int, listesommet : l
             acces=input(f'Quel sommet sera accessible depuis {sommet} ? \n')
         list.append(acces)
     return list
+
 
 
 if __name__ == "__main__":
