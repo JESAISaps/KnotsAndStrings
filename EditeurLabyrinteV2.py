@@ -63,4 +63,5 @@ def getAssoBellesDirections(dicoAsso):
 
 
 def test_belledirection(dicoAsso):
-    print(fonctionBellesDirections(dicoAsso))
+    pass
+    #print(fonctionBellesDirections(dicoAsso))

@@ -1,4 +1,5 @@
 import json
+import os
 
 G = { 0: ("Entree", [(1, "Nord"), (2, "Est"), (3, "Sud")]),
       1: ("Salle a manger", [(0, "Sud"), (4, "Est")]),
@@ -23,8 +24,12 @@ G1 = { 0: ("Bienvenue dans ce monde!", [(1, "Nord"), (2, "Est"), (3, "Sud")]),
 ASSODIRECTIONNOMBRE = {"Nord":1, "Sud":2, "Est":3, "Ouest":4}
 ASSONOMBREDIRECTION = {1:"Nord", 2:"Sud", 3:"Est", 4:"Ouest"}
 VIRTUALEXITNUMBER = 314159265359
-DOTPATH = "./Dots/dot.dot"
-JSONPATH = "./data/data.json"
+if os.name == "nt":
+    DOTPATH = "KnotsAndStrings/Dots/dot.dot"
+    JSONPATH = "KnotsAndStrings/data/data.json"
+elif os.name == "posix":
+    DOTPATH = "./Dots/dot.dot"
+    JSONPATH = "./data/data.json"
 
 def successeurs(graphe,sommet)-> list[int]:
     liste =[]
@@ -75,7 +80,19 @@ def GetAllGraphsInData():
 def GetGraphInData(graphName:str):
     return GetAllGraphsInData()[graphName]
 
-if __name__ == "__main__":
+def SaveGraph(graph, name:str):
+    """
+    Adds graph graph with name name to json file, overrides
+    if name already exits
+    """
+    with open(JSONPATH, "r") as file:
+        g = GetAllGraphsInData()
+    with open(JSONPATH, "w") as file:
+        g[name] = graph
+        json.dump(g, file)
 
-    print(GetAllGraphsInData())
-    print(GetGraphInData("G"))
+if __name__ == "__main__":
+    pass
+    #print(GetAllGraphsInData())
+    #print(GetGraphInData("G"))
+    #SaveGraph(G, "heheheheheheh")
