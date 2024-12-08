@@ -65,8 +65,14 @@ def getNombreSommetAccessibles(sommet,listeSommets,dicoAsso):
     return int(reponse)
 
 
+def beaurappel(listeexistants):
+    rappel=""
+    for element in listeexistants:
+        rappel+=f'{element};'
+    return rappel
+
 def getAccessiblesEtDirectionDepuisSommet(sommet,nombreSommetAccessibles,listeNomsSommets,dicoAsso, dicoAssoInverse):
-    """ 
+    """
     Renvoie la liste [("sommetAccessible,"direction")]
     """
     listeAcces=[]
@@ -75,9 +81,9 @@ def getAccessiblesEtDirectionDepuisSommet(sommet,nombreSommetAccessibles,listeNo
     directionutilisee=[]
     for _ in range(nombreSommetAccessibles):
         while acces not in listeNomsSommets :
-            print(f'Rappels sommets existants : {listeNomsSommets}')
+            print(f'Rappels sommets existants : {beaurappel(listeNomsSommets)}')
             acces=input(f'Quel sommet accessibles depuis {sommet}?')
-        while not direction.isdigit() or int(direction) not in dicoAsso.values() or direction in directionutilisee:
+        while not direction.isdigit() or int(direction) not in dicoAsso.values() or direction.lower() in directionutilisee:
             direction=input(f'Par quelle direction ? \n{getAssoBellesDirections(dicoAsso)}')
         directionutilisee.append(direction)
         listeAcces.append((acces,dicoAssoInverse[int(direction)]))

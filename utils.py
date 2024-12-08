@@ -20,9 +20,9 @@ G1 = { 0: ("Bienvenue dans ce monde!", [(1, "Nord"), (2, "Est"), (3, "Sud")]),
       5: ("Vous êtes dans le jardin.", [(2, "Ouest")]),
       6: ("Vous êtes sorti du monde, bravo!", [])}
 
-
-ASSODIRECTIONNOMBRE = {"Nord":1, "Sud":2, "Est":3, "Ouest":4}
-ASSONOMBREDIRECTION = {1:"Nord", 2:"Sud", 3:"Est", 4:"Ouest"}
+DIRECTIONS = ["Nord", "Sud", "Est", "Ouest","Nord Ouest","Nord Est","Sud Est","Sud Ouest"]
+ASSODIRECTIONNOMBRE = {DIRECTIONS[i-1]:i for i in range(1,len(DIRECTIONS)+1)}
+ASSONOMBREDIRECTION = {ASSODIRECTIONNOMBRE[key]:key for key in ASSODIRECTIONNOMBRE}
 VIRTUALEXITNUMBER = 314159265359
 if os.name == "nt":
     DOTPATH = "KnotsAndStrings/Dots/dot.dot"

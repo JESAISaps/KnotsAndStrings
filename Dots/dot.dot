@@ -1,21 +1,12 @@
 digraph g{ 
-"Chambre1";
-"Chambre1" -> "Couloir" [label = "Ouest"] [fontcolor=brown]
-"Chambre2";
-"Chambre2" -> "Couloir" [label = "Est"] [fontcolor=brown]
-"Salle de bain";
-"Salle de bain" -> "Cuisine" [label = "Nord"][fontcolor=brown]
-"Salle de bain" -> "Couloir" [label = "Est"] [fontcolor=brown]
-"Salle a manger";
-"Salle a manger" -> "Couloir" [label = "Ouest"] [fontcolor=brown]
-"Toilettes";
-"Toilettes" -> "Couloir" [label = "Est"] [fontcolor=brown]
-"Couloir";
-"Couloir" -> "Chambre1" [label = "Nord"] [fontcolor=brown]
-"Couloir" -> "Chambre2" [label = "Est"] [fontcolor=brown]
-"Couloir" -> "Salle de bain" [label = "Ouest"] [fontcolor=brown]
-"Couloir" -> "Toilettes" [label = "Sud"] [fontcolor=brown]
-"Cuisine";
-"Cuisine" -> "Salle a manger" [label = "Nord"] [fontcolor=brown]
-"Cuisine" -> "Salle de bain" [label = "Ouest"] [fontcolor=brown]
+"Eric";
+"Eric" -> "Eric" [label = "Nord"] [fontcolor=brown]
+"Eric" -> "Marine" [label = "Sud"] [fontcolor=brown]
+"Eric" -> "Nico" [label = "Est"] [fontcolor=brown]
+"Eric" -> "Julie" [label = "Ouest"] [fontcolor=brown]
+"Eric" -> "Gabin" [label = "Nord Ouest"] [fontcolor=brown]
+"Marine";
+"Nico";
+"Julie";
+"Gabin";
 }
