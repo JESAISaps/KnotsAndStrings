@@ -72,10 +72,13 @@ def GetAllGraphsInData():
     Returns all graphs in data.json. First list is the list of names
     Keys from inside the graph are converted back to int
     """
-
-    with open(JSONPATH, "r") as file:
-        g = json.load(file, object_hook=lambda d: {int(k) if k.lstrip('-').isdigit() else k: v for k, v in d.items()})
-    return g
+    try:
+        with open(JSONPATH, "r") as file:
+            g = json.load(file, object_hook=lambda d: {int(k) if k.lstrip('-').isdigit() else k: v for k, v in d.items()})
+        return g
+    except json.decoder.JSONDecodeError as er:
+        print(f"Erreur: {er}\n data.json potentiellement vide.")
+        return {}
 
 def GetGraphInData(graphName:str):
     return GetAllGraphsInData()[graphName]

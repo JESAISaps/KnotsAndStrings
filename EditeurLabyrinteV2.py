@@ -1,3 +1,5 @@
+from utils import SaveGraph
+
 G = { 0: ("Entree", [(1, "Nord"), (2, "Est"), (3, "Sud")]),
       1: ("Salle a manger", [(0, "Sud"), (4, "Est")]),
       2: ("Terrasse", [(5, "Est"), (0, "Ouest")]),
@@ -10,58 +12,99 @@ G = { 0: ("Entree", [(1, "Nord"), (2, "Est"), (3, "Sud")]),
 
 from utils import ASSODIRECTIONNOMBRE,ASSONOMBREDIRECTION
 
-def creationLabyrinte():
+def creationLabyrinte(dicoAsso,dicoAssoInverse):
+    """
+    Renvoie un graphe et son nom (tuple)
+    """
+    Gini={}
     G={}
+    name = getNameGraph()
     nombreSommets=getNombreSommets()
+    listeSommets=getListeNomSommets(nombreSommets)
+
+    for i in range(nombreSommets):
+        Gini[i]=(listeSommets[i],[])
+    DicoInverse=dicoInverse(Gini)
+
+    for i in range(nombreSommets):
+        nombreaccessibles=getNombreSommetAccessibles(listeSommets[i],listeSommets,dicoAsso)
+        accessibles=getAccessiblesEtDirectionDepuisSommet(listeSommets[i],nombreaccessibles,listeSommets,dicoAsso,dicoAssoInverse)
+        for j in range(len(accessibles)):
+            numeroSommet=DicoInverse[accessibles[j][0]]
+            accessibles[j] = (numeroSommet,accessibles[j][1])
+        G[i]=(listeSommets[i], accessibles)
+    return G,name
+
+def dicoInverse(dico):
+    """
+    Renvoie un nouveau dictionnaire qui inverse le numero et le nom
+    """
+
+    ginverse={}
+    for key in dico.keys():
+        ginverse[dico[key][0]]=key
+    return ginverse
 
 def getNombreSommets():
     reponse=""
-    while reponse.isdigit()==False or reponse<1:
-        reponse=int(input("Combien de sommet dans le graphe?"))
+    while not reponse.isdigit() or int(reponse)<1:
+        reponse=input("Combien de sommet dans le graphe?")
+    return int(reponse)
 
 def getListeNomSommets(nombresommets):
     liste=[]
     for sommet in range(nombresommets):
-        liste.append(input(f'Quels est le nom du sommet {sommet}'))
+        liste.append(input(f'Quels est le nom du sommet {sommet} ?\n'))
     return liste
 
-        
+
+def getNombreSommetAccessibles(sommet,listeSommets,dicoAsso):
+    reponse=""
+    while not reponse.isdigit() or int(reponse) > len(listeSommets) or int(reponse)>len(dicoAsso):
+        reponse = input(f'Combien de sommets accessibles depuis {sommet}? \n')
+    return int(reponse)
+
+
 def getAccessiblesEtDirectionDepuisSommet(sommet,nombreSommetAccessibles,listeNomsSommets,dicoAsso, dicoAssoInverse):
+    """ 
+    Renvoie la liste [("sommetAccessible,"direction")]
+    """
     listeAcces=[]
     acces=""
     direction = ""
+    directionutilisee=[]
     for _ in range(nombreSommetAccessibles):
-        while not acces.isdigit() or acces not in listeNomsSommets :
-            acces=input(f'Quels sommet accessibles depuis {sommet}?')
-        while direction not in (dicoAsso.values()):
-            direction=input(f'Par quelle direction ? {getAssoBellesDirections(dicoAsso)}')
-        direction =int(direction)
-        listeAcces.append(sommet,dicoAssoInverse[direction])
+        while acces not in listeNomsSommets :
+            print(f'Rappels sommets existants : {listeNomsSommets}')
+            acces=input(f'Quel sommet accessibles depuis {sommet}?')
+        while not direction.isdigit() or int(direction) not in dicoAsso.values() or direction in directionutilisee:
+            direction=input(f'Par quelle direction ? \n{getAssoBellesDirections(dicoAsso)}')
+        directionutilisee.append(direction)
+        listeAcces.append((acces,dicoAssoInverse[int(direction)]))
+        direction = ""
+        acces = ""
     return listeAcces
 
-#pb ici verifier nombre sommets accessibles et faire le get nb sommet accessibles
 
-def test_AccessibleEtDirectiondepuisSommet(sommet,nombreSommetaccessibles,listeNomsSommets,dicoAsso, dicoAssoInverse):
-    print(getAccessiblesEtDirectionDepuisSommet(sommet,nombreSommetaccessibles,listeNomsSommets,dicoAsso, dicoAssoInverse))
-print(test_AccessibleEtDirectiondepuisSommet(1,2,[1,2,3],ASSODIRECTIONNOMBRE,ASSONOMBREDIRECTION))
-
-def getAssoBellesDirections(dicoAsso):
+def getAssoBellesDirections(dicoAssonombredirection):
     """
     dicoAsso de la forme {1:"Nord"}
     """
     direction=""
-    for key in dicoAsso:
-        direction+=f'{dicoAsso[key]} : {key}\n'
-                                
+    for key in dicoAssonombredirection:
+        direction+=f'{dicoAssonombredirection[key]} : {key}\n'                                
     return direction 
 
+def getNameGraph():
+    name=input("Quel est le nom du graphe?\n")
+    return name
 
 
+def test(dicoAsso,sommet,nombreSommetaccessibles,listeNomsSommets,dicoAssoInverse):
+    print(getAssoBellesDirections(dicoAsso))
+    print(getAccessiblesEtDirectionDepuisSommet(sommet,nombreSommetaccessibles,listeNomsSommets,dicoAsso, dicoAssoInverse))
 
 
-
-
-
-def test_belledirection(dicoAsso):
-    pass
-    #print(fonctionBellesDirections(dicoAsso))
+if __name__ == "__main__":
+    grapheetnom=creationLabyrinte(ASSODIRECTIONNOMBRE,ASSONOMBREDIRECTION)
+    SaveGraph(grapheetnom[0],grapheetnom[1])

@@ -1,4 +1,4 @@
-from utils import G, DOTPATH
+from utils import G, DOTPATH, GetGraphInData
 
 def CreateLineInDot(gauche,droite,etiquette):
     text = f'"{gauche}" -> "{droite}" [label = "{etiquette}"] [fontcolor=brown]'
@@ -10,6 +10,7 @@ def CreerCarteVisite(graph,fichier):
     """
     fichier.write("digraph g{ \n")
     for key in graph:
+        fichier.write(f'"{graph[key][0]}";\n')
         for suite in graph[key][1]:
             fichier.write(CreateLineInDot(graph[key][0],graph[suite[0]][0],suite[1]))
             fichier.write("\n")
@@ -17,5 +18,7 @@ def CreerCarteVisite(graph,fichier):
 
 if __name__ == "__main__":
     with open(DOTPATH, "w") as carte:
-        CreerCarteVisite(G,carte)
+        g = GetGraphInData("Valence")
+        print(g)
+        CreerCarteVisite(g,carte)
  

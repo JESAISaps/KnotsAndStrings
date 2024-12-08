@@ -1,16 +1,21 @@
 digraph g{ 
-"Entree" -> "Salle a manger" [label = "Nord"] [fontcolor=brown]
-"Entree" -> "Terrasse" [label = "Est"] [fontcolor=brown]
-"Entree" -> "Route" [label = "Sud"] [fontcolor=brown]
-"Salle a manger" -> "Entree" [label = "Sud"] [fontcolor=brown]
-"Salle a manger" -> "Garde-manger" [label = "Est"] [fontcolor=brown]
-"Terrasse" -> "Jardin" [label = "Est"] [fontcolor=brown]
-"Terrasse" -> "Entree" [label = "Ouest"] [fontcolor=brown]
-"Route" -> "Entree" [label = "Nord"] [fontcolor=brown]
-"Route" -> "Sortie" [label = "Est"] [fontcolor=brown]
-"Route" -> "Trou" [label = "Ouest"] [fontcolor=brown]
-"Garde-manger" -> "Salle a manger" [label = "Ouest"] [fontcolor=brown]
-"Jardin" -> "Terrasse" [label = "Ouest"] [fontcolor=brown]
-"Trou" -> "Perdu" [label = "Nord"] [fontcolor=brown]
-"Perdu" -> "Trou" [label = "Sud"] [fontcolor=brown]
+"Chambre1";
+"Chambre1" -> "Couloir" [label = "Ouest"] [fontcolor=brown]
+"Chambre2";
+"Chambre2" -> "Couloir" [label = "Est"] [fontcolor=brown]
+"Salle de bain";
+"Salle de bain" -> "Cuisine" [label = "Nord"][fontcolor=brown]
+"Salle de bain" -> "Couloir" [label = "Est"] [fontcolor=brown]
+"Salle a manger";
+"Salle a manger" -> "Couloir" [label = "Ouest"] [fontcolor=brown]
+"Toilettes";
+"Toilettes" -> "Couloir" [label = "Est"] [fontcolor=brown]
+"Couloir";
+"Couloir" -> "Chambre1" [label = "Nord"] [fontcolor=brown]
+"Couloir" -> "Chambre2" [label = "Est"] [fontcolor=brown]
+"Couloir" -> "Salle de bain" [label = "Ouest"] [fontcolor=brown]
+"Couloir" -> "Toilettes" [label = "Sud"] [fontcolor=brown]
+"Cuisine";
+"Cuisine" -> "Salle a manger" [label = "Nord"] [fontcolor=brown]
+"Cuisine" -> "Salle de bain" [label = "Ouest"] [fontcolor=brown]
 }
