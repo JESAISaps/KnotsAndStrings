@@ -1,12 +1,25 @@
 digraph g{ 
-"Eric";
-"Eric" -> "Eric" [label = "Nord"] [fontcolor=brown]
-"Eric" -> "Marine" [label = "Sud"] [fontcolor=brown]
-"Eric" -> "Nico" [label = "Est"] [fontcolor=brown]
-"Eric" -> "Julie" [label = "Ouest"] [fontcolor=brown]
-"Eric" -> "Gabin" [label = "Nord Ouest"] [fontcolor=brown]
-"Marine";
-"Nico";
-"Julie";
-"Gabin";
+"Entree" [fontcolor=black] [color=red];
+"Entree" -> "Salle a manger" [label = "Nord"] [fontcolor=darkgreen]
+"Entree" -> "Terrasse" [label = "Est"] [fontcolor=darkgreen]
+"Entree" -> "Route" [label = "Sud"] [fontcolor=red] [color=red]
+"Salle a manger";
+"Salle a manger" -> "Entree" [label = "Sud"] [fontcolor=darkgreen]
+"Salle a manger" -> "Garde-manger" [label = "Est"] [fontcolor=darkgreen]
+"Terrasse";
+"Terrasse" -> "Jardin" [label = "Est"] [fontcolor=darkgreen]
+"Terrasse" -> "Entree" [label = "Ouest"] [fontcolor=darkgreen]
+"Route" [fontcolor=black] [color=red];
+"Route" -> "Entree" [label = "Nord"] [fontcolor=darkgreen]
+"Route" -> "Sortie" [label = "Est"] [fontcolor=red] [color=red]
+"Route" -> "Trou" [label = "Ouest"] [fontcolor=darkgreen]
+"Garde-manger";
+"Garde-manger" -> "Salle a manger" [label = "Ouest"] [fontcolor=darkgreen]
+"Jardin";
+"Jardin" -> "Terrasse" [label = "Ouest"] [fontcolor=darkgreen]
+"Sortie" [fontcolor=black] [color=red];
+"Trou";
+"Trou" -> "Perdu" [label = "Nord"] [fontcolor=darkgreen]
+"Perdu";
+"Perdu" -> "Trou" [label = "Sud"] [fontcolor=darkgreen]
 }
