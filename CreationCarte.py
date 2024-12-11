@@ -18,7 +18,7 @@ def CreerCarteVisite(graph,fichier):
 
 if __name__ == "__main__":
     with open(DOTPATH, "w") as carte:
-        g = GetGraphInData("Maison")
+        g = GetGraphInData("G")
         print(g)
         CreerCarteVisite(g,carte)
  

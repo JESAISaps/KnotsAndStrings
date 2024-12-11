@@ -1,12 +1,25 @@
 digraph g{ 
-"Eric";
-"Eric" -> "Eric" [label = "Nord"] [fontcolor=brown]
-"Eric" -> "Marine" [label = "Sud"] [fontcolor=brown]
-"Eric" -> "Nico" [label = "Est"] [fontcolor=brown]
-"Eric" -> "Julie" [label = "Ouest"] [fontcolor=brown]
-"Eric" -> "Gabin" [label = "Nord Ouest"] [fontcolor=brown]
-"Marine";
-"Nico";
-"Julie";
-"Gabin";
+"Entree";
+"Entree" -> "Salle a manger" [label = "Nord"] [fontcolor=brown]
+"Entree" -> "Terrasse" [label = "Est"] [fontcolor=brown]
+"Entree" -> "Route" [label = "Sud"] [fontcolor=brown]
+"Salle a manger";
+"Salle a manger" -> "Entree" [label = "Sud"] [fontcolor=brown]
+"Salle a manger" -> "Garde-manger" [label = "Est"] [fontcolor=brown]
+"Terrasse";
+"Terrasse" -> "Jardin" [label = "Est"] [fontcolor=brown]
+"Terrasse" -> "Entree" [label = "Ouest"] [fontcolor=brown]
+"Route";
+"Route" -> "Entree" [label = "Nord"] [fontcolor=brown]
+"Route" -> "Sortie" [label = "Est"] [fontcolor=brown]
+"Route" -> "Trou" [label = "Ouest"] [fontcolor=brown]
+"Garde-manger";
+"Garde-manger" -> "Salle a manger" [label = "Ouest"] [fontcolor=brown]
+"Jardin";
+"Jardin" -> "Terrasse" [label = "Ouest"] [fontcolor=brown]
+"Sortie";
+"Trou";
+"Trou" -> "Perdu" [label = "Nord"] [fontcolor=brown]
+"Perdu";
+"Perdu" -> "Trou" [label = "Sud"] [fontcolor=brown]
 }

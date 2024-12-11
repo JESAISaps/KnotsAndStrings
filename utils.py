@@ -77,11 +77,14 @@ def GetAllGraphsInData():
             g = json.load(file, object_hook=lambda d: {int(k) if k.lstrip('-').isdigit() else k: v for k, v in d.items()})
         return g
     except json.decoder.JSONDecodeError as er:
-        print(f"Erreur: {er}\n data.json potentiellement vide.")
+        print(f"Warning: {er}\n data.json potentiellement vide.")
         return {}
 
 def GetGraphInData(graphName:str):
-    return GetAllGraphsInData()[graphName]
+    try:
+        return GetAllGraphsInData()[graphName]
+    except KeyError:
+        print("Imbecile ce labyrinthe n'existe pas")
 
 def SaveGraph(graph, name:str):
     """
@@ -98,4 +101,4 @@ if __name__ == "__main__":
     pass
     #print(GetAllGraphsInData())
     #print(GetGraphInData("G"))
-    #SaveGraph(G, "heheheheheheh")
+    SaveGraph(G, "G")
