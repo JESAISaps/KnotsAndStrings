@@ -1,4 +1,9 @@
 from utils import ASSODIRECTIONNOMBRE, accessiblechemins, G
+from sys import argv
+
+isPiping = False
+if len(argv) >= 1 and argv[1] == "pipe":
+    isPiping = True
 
 def ReconstruireChemin(depart, arrivee, arcs):
     """
@@ -61,7 +66,10 @@ def test():
     flag = flag and CheminToGo(G, depart, arrivee)
     return flag
 
+def StartWithPipe():
+    PrintCreateGPS(G, CheminToGo(G, 0, 4))
+
 if __name__ == "__main__":
     assert test()
-    print(dict(accessiblechemins(G, 0)[1]))
-    print(ReconstruireCheminAsTuples(0,6,accessiblechemins(G, 0)[1]))
+    if isPiping:
+        StartWithPipe()
