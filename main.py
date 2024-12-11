@@ -33,6 +33,7 @@ def ShowLabyrinth(name, start=None, end=None):
 
 if __name__ == "__main__":
     doctest.testfile("doctest.txt")
+    
     g = GetGraphInData("g")
     #print(GetImpossibleExits(g))
     ShowLabyrinth("g", 0, 6)
