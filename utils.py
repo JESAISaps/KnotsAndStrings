@@ -32,6 +32,9 @@ elif os.name == "posix":
     DOTPATH = "./Dots/dot.dot"
     JSONPATH = "./data/data.json"
 
+class GrapheInexistant(KeyError):
+    pass 
+
 def successeurs(graphe,sommet)-> list[int]:
     liste =[]
     for element in graphe[sommet][1]:
@@ -88,7 +91,7 @@ def GetGraphInData(graphName:str):
     try:
         return GetAllGraphsInData()[graphName.lower()]
     except KeyError:
-        print("Imbecile ce labyrinthe n'existe pas")
+        raise GrapheInexistant(f"Labyrinthe non trouvé dans data.json, avez-vous bien orthographié '{graphName}' ?")
 
 def SaveGraph(graph, name:str):
     """
