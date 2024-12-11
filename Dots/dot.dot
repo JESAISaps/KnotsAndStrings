@@ -1,25 +1,25 @@
 digraph g{ 
-"Entree";
-"Entree" -> "Salle a manger" [label = "Nord"] [fontcolor=brown]
-"Entree" -> "Terrasse" [label = "Est"] [fontcolor=brown]
-"Entree" -> "Route" [label = "Sud"] [fontcolor=brown]
+"Entree" [fontcolor=black] [color=red];
+"Entree" -> "Salle a manger" [label = "Nord"] [fontcolor=darkgreen]
+"Entree" -> "Terrasse" [label = "Est"] [fontcolor=darkgreen]
+"Entree" -> "Route" [label = "Sud"] [fontcolor=red] [color=red]
 "Salle a manger";
-"Salle a manger" -> "Entree" [label = "Sud"] [fontcolor=brown]
-"Salle a manger" -> "Garde-manger" [label = "Est"] [fontcolor=brown]
+"Salle a manger" -> "Entree" [label = "Sud"] [fontcolor=darkgreen]
+"Salle a manger" -> "Garde-manger" [label = "Est"] [fontcolor=darkgreen]
 "Terrasse";
-"Terrasse" -> "Jardin" [label = "Est"] [fontcolor=brown]
-"Terrasse" -> "Entree" [label = "Ouest"] [fontcolor=brown]
-"Route";
-"Route" -> "Entree" [label = "Nord"] [fontcolor=brown]
-"Route" -> "Sortie" [label = "Est"] [fontcolor=brown]
-"Route" -> "Trou" [label = "Ouest"] [fontcolor=brown]
+"Terrasse" -> "Jardin" [label = "Est"] [fontcolor=darkgreen]
+"Terrasse" -> "Entree" [label = "Ouest"] [fontcolor=darkgreen]
+"Route" [fontcolor=black] [color=red];
+"Route" -> "Entree" [label = "Nord"] [fontcolor=darkgreen]
+"Route" -> "Sortie" [label = "Est"] [fontcolor=red] [color=red]
+"Route" -> "Trou" [label = "Ouest"] [fontcolor=darkgreen]
 "Garde-manger";
-"Garde-manger" -> "Salle a manger" [label = "Ouest"] [fontcolor=brown]
+"Garde-manger" -> "Salle a manger" [label = "Ouest"] [fontcolor=darkgreen]
 "Jardin";
-"Jardin" -> "Terrasse" [label = "Ouest"] [fontcolor=brown]
-"Sortie";
+"Jardin" -> "Terrasse" [label = "Ouest"] [fontcolor=darkgreen]
+"Sortie" [fontcolor=black] [color=red];
 "Trou";
-"Trou" -> "Perdu" [label = "Nord"] [fontcolor=brown]
+"Trou" -> "Perdu" [label = "Nord"] [fontcolor=darkgreen]
 "Perdu";
-"Perdu" -> "Trou" [label = "Sud"] [fontcolor=brown]
+"Perdu" -> "Trou" [label = "Sud"] [fontcolor=darkgreen]
 }

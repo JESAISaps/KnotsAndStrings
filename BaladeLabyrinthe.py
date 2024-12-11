@@ -1,7 +1,12 @@
 from utils import ASSODIRECTIONNOMBRE, successeurs
+from sys import argv
 
 if __name__ == "__main__":
     from utils import G
+
+isPiping = False
+if len(argv) >= 1 and argv[1] == "pipe":
+    isPiping = True
 
 def creerDicoLiens(listechoix:list[tuple[int, str]]) -> dict[str, list[tuple[int, str]]]:
     """
@@ -40,12 +45,18 @@ def visite(graphe,entree) -> None:
         print(f'\nPosition : {graphe[caseActuelle][0]} \n')
         # Boucle tant que le choix est invalide.
         while choix.isdigit() == False or int(choix) not in dicoliens.keys():
-            choix=input("Quel chemin voulez vous prendre? "+chaineaffichee)
-        
+            try:
+                choix=input("Quel chemin voulez vous prendre? "+chaineaffichee)
+            except EOFError:
+                return "Fin du piping"
         caseActuelle = dicoliens[int(choix)][0]
         choix=""
 
     return "Bravo"
 
+def StartWithPipe():
+    print(visite(G, 0))
+
 if __name__ == "__main__":
-    print(visite(G,0))
+    if isPiping:
+        print(visite(G,0))

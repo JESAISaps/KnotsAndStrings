@@ -1,6 +1,14 @@
 from utils import ASSODIRECTIONNOMBRE, accessiblechemins, G
+from sys import argv
+
+isPiping = False
+if len(argv) >= 1 and argv[1] == "pipe":
+    isPiping = True
 
 def ReconstruireChemin(depart, arrivee, arcs):
+    """
+    Retourne le chemin de depart a arrivee sous la forme de succession de sommets
+    """
     chemin = [arrivee]
     dicoArcs = dict(arcs)
     #print(f"Arcs: {arcs}")
@@ -11,7 +19,22 @@ def ReconstruireChemin(depart, arrivee, arcs):
 
     return chemin
 
+def ReconstruireCheminAsTuples(depart, arrivee, arcs) -> list[tuple[int, int]]:
+    """
+    Retourne le chemin de depart a arrivée sous la formes d'arcs. (enleve les arcs inutiles)
+    arcs de la forme [(sommet : provenance)]
+    """
+    dico = dict(arcs)
+    rep = [(dico[arrivee], arrivee)]
+
+    while rep[0][0] != depart:
+        rep.insert(0,(dico[rep[0][0]], rep[0][0]))
+    return rep
+
 def CheminToGo(G, d, a):
+    """
+    Retourne la liste des cles des sommets du graph G pour aller du sommet d au sommet a
+    """
     accessibleVerticises, links = accessiblechemins(G, d)
     #print(accessibleVerticises)
     if a not in accessibleVerticises:
@@ -39,9 +62,14 @@ def test():
     arrivee = 6
     #print(CheminToGo(G, depart, arrivee))
     #PrintCreateGPS(G, CheminToGo(G, depart, arrivee))
-    print(CreateGPS(G, CheminToGo(G, depart, arrivee)))
+    #print(CreateGPS(G, CheminToGo(G, depart, arrivee)))
     flag = flag and CheminToGo(G, depart, arrivee)
     return flag
 
+def StartWithPipe():
+    PrintCreateGPS(G, CheminToGo(G, 0, 4))
+
 if __name__ == "__main__":
     assert test()
+    if isPiping:
+        StartWithPipe()
