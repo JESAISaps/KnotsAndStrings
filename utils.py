@@ -43,7 +43,8 @@ def successeurs(graphe,sommet)-> list[int]:
 
 def accessiblechemins(G,d):
     """
-    Renvoie l'ensemble des sommets accessibles depuis d
+    Renvoie l'ensemble des sommets accessibles depuis d, ainsi que les chemins pour y arriver
+    TODO: implementation de Jikstra
     """
     monde = {d}
     sommetsAccessibles = {sommet[0] for sommet in G[d][1]}

@@ -1,4 +1,5 @@
 from utils import ASSODIRECTIONNOMBRE, successeurs
+from colorama import Fore
 from sys import argv
 
 if __name__ == "__main__":
@@ -29,7 +30,7 @@ def creerChaineAfficherEtiquettesAvecNumero(dicoLiens) -> str:
         listechaine.append(f'{key} : {dicoLiens[key][1]}\n')
     listechaine.sort(key=lambda s :s[0])
     for element in listechaine:
-        chaine+= element
+        chaine+= f"{Fore.RED}{element[0]}{Fore.WHITE}{element[1:]}"
     return chaine
 
 def visite(graphe,entree) -> None:
@@ -45,13 +46,13 @@ def visite(graphe,entree) -> None:
 
         dicoliens=creerDicoLiens(graphe[caseActuelle][1])
         chaineaffichee= creerChaineAfficherEtiquettesAvecNumero(dicoliens)
-        print(f'\nPosition : {graphe[caseActuelle][0]} \n')
+        print(f'\nPosition : {Fore.GREEN}{graphe[caseActuelle][0]}{Fore.WHITE} \n')
         # Boucle tant que le choix est invalide.
         while choix.isdigit() == False or int(choix) not in dicoliens.keys():
             try:
-                choix=input("Quel chemin voulez vous prendre? "+chaineaffichee)
+                choix=input(f"Quel chemin voulez vous prendre? {chaineaffichee}\n-> ")
             except EOFError:
-                return "Fin du piping"
+                return "\nFin du piping"
         caseActuelle = dicoliens[int(choix)][0]
         choix=""
 

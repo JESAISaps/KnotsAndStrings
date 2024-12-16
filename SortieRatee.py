@@ -31,13 +31,13 @@ def MirrorGraph(originGraph):
     
     return graph
 
-def GetPossibleExitWithVirtual(graph):
+def GetPossibleExits(graph):
     """
     Returns set of vertex from where we can exit
     """
     newGraph = CreateGraphWithUniqueExit(graph)
 
-    return accessiblechemins(MirrorGraph(newGraph), VIRTUALEXITNUMBER)[0]
+    return set.difference(accessiblechemins(MirrorGraph(newGraph), VIRTUALEXITNUMBER)[0], {VIRTUALEXITNUMBER})
 
 
 def GetImpossibleExits(graph):
@@ -45,7 +45,7 @@ def GetImpossibleExits(graph):
     Returns tag of verticies from where we can't escape
     """
     verticies = {key for key in graph}
-    return {graph[key][0] for key in set.difference(verticies, GetPossibleExitWithVirtual(graph))}
+    return {graph[key][0] for key in set.difference(verticies, GetPossibleExits(graph))}
 
 if __name__ == "__main__":
-    print(GetImpossibleExits(G))
+    print(GetPossibleExits(G))
