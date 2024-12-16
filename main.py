@@ -25,9 +25,11 @@ def ShowLabyrinth(name, start=None, end=None):
                 CreerCarteAvecChemin(graph, file, start, end)
             case _:
                 raise AttributeError("Il faut donner un depart et une fin, ou rien du tout.")
-    
+
     graphviz.render("dot", "pdf", DOTPATH)
-    webbrowser.open(DOTPATH + ".pdf", 2)
+    
+    # Ne marche que sous linux, windows est pas tres pratique faut mettre le chemin absolu
+    webbrowser.open(f"{DOTPATH}.pdf", 2)
 
 def CallAccessibles(graphName:str, entree, sortie):
     graph = GetGraphInData(graphName)

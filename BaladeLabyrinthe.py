@@ -5,7 +5,7 @@ if __name__ == "__main__":
     from utils import G
 
 isPiping = False
-if len(argv) >= 1 and argv[1] == "pipe":
+if len(argv) > 1 and argv[1] == "pipe":
     isPiping = True
 
 def creerDicoLiens(listechoix:list[tuple[int, str]]) -> dict[str, list[tuple[int, str]]]:
@@ -24,9 +24,12 @@ def creerChaineAfficherEtiquettesAvecNumero(dicoLiens) -> str:
     created by creerDicoLiens
     """
     chaine = "Chemins possibles : \n"
+    listechaine=[]
     for key in dicoLiens:
-        chaine += str(key) + " : "
-        chaine += dicoLiens[key][1] + "\n"
+        listechaine.append(f'{key} : {dicoLiens[key][1]}\n')
+    listechaine.sort(key=lambda s :s[0])
+    for element in listechaine:
+        chaine+= element
     return chaine
 
 def visite(graphe,entree) -> None:
@@ -58,5 +61,7 @@ def StartWithPipe():
     print(visite(G, 0))
 
 if __name__ == "__main__":
-    if isPiping:
+    if isPiping: #ne jamais modifier le contenu du if sauf si modification du piping
+        print(visite(G,0))
+    else : 
         print(visite(G,0))

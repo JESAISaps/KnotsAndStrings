@@ -37,6 +37,6 @@ def CreerCarteAvecChemin(graph,fichier, entree, sortie):
 
 if __name__ == "__main__":
     with open(DOTPATH, "w") as carte:
-        g = GetGraphInData("paris")
+        g = GetGraphInData("p")
         CreerCarteAvecChemin(g,carte,0,6)
  

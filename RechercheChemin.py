@@ -2,7 +2,7 @@ from utils import ASSODIRECTIONNOMBRE, accessiblechemins, G
 from sys import argv
 
 isPiping = False
-if len(argv) >= 1 and argv[1] == "pipe":
+if len(argv) > 1 and argv[1] == "pipe":
     isPiping = True
 
 def ReconstruireChemin(depart, arrivee, arcs):

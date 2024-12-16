@@ -79,7 +79,6 @@ def getAccessiblesEtDirectionDepuisSommet(sommet,nombreSommetAccessibles,listeNo
         acces = ""
     return listeAcces
 
-
 def getAssoBellesDirections(dicoAssonombredirection):
     """
     dicoAsso de la forme {1:"Nord"}
@@ -95,6 +94,10 @@ def getNameGraph():
 
 
 def test(dicoAsso,sommet,nombreSommetaccessibles,listeNomsSommets,dicoAssoInverse):
+    
+    """ Test des fonctions écriture et fonction accessible et direction depuis sommet 
+    qui es la plus importante pour l'éditeur """
+    
     print(getAssoBellesDirections(dicoAsso))
     print(getAccessiblesEtDirectionDepuisSommet(sommet,nombreSommetaccessibles,listeNomsSommets,dicoAsso, dicoAssoInverse))
 
