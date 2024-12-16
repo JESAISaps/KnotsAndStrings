@@ -4,6 +4,7 @@ import webbrowser
 from utils import GetGraphInData, DOTPATH
 from CreationCarte import CreerCarteAvecChemin, CreerCarteVisite
 from SortieRatee import GetImpossibleExits
+from RechercheChemin import accessiblechemins
 import graphviz
 
 
@@ -28,9 +29,14 @@ def ShowLabyrinth(name, start=None, end=None):
     graphviz.render("dot", "pdf", DOTPATH)
     webbrowser.open(DOTPATH + ".pdf", 2)
 
+def CallAccessibles(graphName:str, entree, sortie):
+    graph = GetGraphInData(graphName)
+    return accessiblechemins(graph, entree, sortie)
 
 if __name__ == "__main__":
     doctest.testfile("doctest.txt")
-    g = GetGraphInData("g")
-    print(GetImpossibleExits(g))
-    ShowLabyrinth("g", 0, 6)
+    #g = GetGraphInData("g")
+    #print(GetImpossibleExits(g))
+
+    #ShowLabyrinth("g", 0, 6)
+    print(CallAccessibles("g", 0, 6))
