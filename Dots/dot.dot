@@ -1,25 +1,99 @@
 digraph g{ 
-"Entree" [fontcolor=black] [color=red];
-"Entree" -> "Salle a manger" [label = "Nord"] [fontcolor=darkgreen]
-"Entree" -> "Terrasse" [label = "Est"] [fontcolor=darkgreen]
-"Entree" -> "Route" [label = "Sud"] [fontcolor=red] [color=red]
-"Salle a manger";
-"Salle a manger" -> "Entree" [label = "Sud"] [fontcolor=darkgreen]
-"Salle a manger" -> "Garde-manger" [label = "Est"] [fontcolor=darkgreen]
-"Terrasse";
-"Terrasse" -> "Jardin" [label = "Est"] [fontcolor=darkgreen]
-"Terrasse" -> "Entree" [label = "Ouest"] [fontcolor=darkgreen]
-"Route" [fontcolor=black] [color=red];
-"Route" -> "Entree" [label = "Nord"] [fontcolor=darkgreen]
-"Route" -> "Sortie" [label = "Est"] [fontcolor=red] [color=red]
-"Route" -> "Trou" [label = "Ouest"] [fontcolor=darkgreen]
-"Garde-manger";
-"Garde-manger" -> "Salle a manger" [label = "Ouest"] [fontcolor=darkgreen]
-"Jardin";
-"Jardin" -> "Terrasse" [label = "Ouest"] [fontcolor=darkgreen]
-"Sortie" [fontcolor=black] [color=red];
-"Trou";
-"Trou" -> "Perdu" [label = "Nord"] [fontcolor=darkgreen]
-"Perdu";
-"Perdu" -> "Trou" [label = "Sud"] [fontcolor=darkgreen]
+"https://www.fsf.org" [fontcolor=black] [color=red];
+"https://www.fsf.org" -> "https://www.fsf.org/working-together/fund" [label = "Working Together for Free Software Fund"] [fontcolor=red] [color=red];
+"https://www.fsf.org/working-together/fund" [fontcolor=black] [color=red];
+"https://www.fsf.org/working-together/fund" -> "https://www.fsf.org/blogs/recent-blog-posts" [label = ""] [fontcolor=red] [color=red];
+"https://www.fsf.org/blogs/recent-blog-posts" [fontcolor=black] [color=red];
+"https://www.fsf.org/blogs/recent-blog-posts" -> "https://www.fsf.org/blogs/gnu-press/" [label = "GNU Press blog"] [fontcolor=red] [color=red];
+"https://www.fsf.org/blogs/gnu-press/" [fontcolor=black] [color=red];
+"https://www.fsf.org/blogs/gnu-press/" -> "https://www.fsf.org/blogs/gnu-press/whats-new-in-the-gnu-press-shop" [label = "What's new in the GNU Press Shop"] [fontcolor=red] [color=red];
+"https://www.fsf.org/blogs/gnu-press/" -> "https://www.fsf.org/blogs/gnu-press/emacs-t-shirts-available-now-at-the-gnu-press-shop" [label = "GNU Emacs T-shirts available now at the GNU Press Shop"] [fontcolor=darkgreen];
+"https://www.fsf.org/blogs/gnu-press/emacs-t-shirts-available-now-at-the-gnu-press-shop";
+"https://www.fsf.org/blogs/gnu-press/emacs-t-shirts-available-now-at-the-gnu-press-shop" -> "https://www.fsf.org/blogs/gnu-press" [label = "GNU Press"] [fontcolor=darkgreen];
+"https://www.fsf.org/blogs/gnu-press";
+"https://www.fsf.org/blogs/gnu-press/whats-new-in-the-gnu-press-shop" [fontcolor=black] [color=red];
+"https://www.fsf.org/blogs/gnu-press/whats-new-in-the-gnu-press-shop" -> "https://www.fsf.org/about/interns/2019/valessio-brito" [label = "intern"] [fontcolor=red] [color=red];
+"https://www.fsf.org/about/interns/2019/valessio-brito" [fontcolor=black] [color=red];
+"https://www.fsf.org/about/interns/2019/valessio-brito" -> "https://www.fsf.org/about/contact/" [label = "Contact Us"] [fontcolor=red] [color=red];
+"https://www.fsf.org/about/interns/2019/valessio-brito" -> "https://www.fsf.org/about/financial" [label = "FSF financial information"] [fontcolor=darkgreen];
+"https://www.fsf.org/about/financial";
+"https://www.fsf.org/about/financial" -> "https://www.fsf.org/about/fsf-bylaws" [label = "Our bylaws"] [fontcolor=darkgreen];
+"https://www.fsf.org/about/financial" -> "https://www.fsf.org/about/fsf-relationship-framework" [label = "2005 FSF Relationship Framework"] [fontcolor=darkgreen];
+"https://www.fsf.org/about/financial" -> "https://www.fsf.org/annual-reports/" [label = "here"] [fontcolor=darkgreen];
+"https://www.fsf.org/annual-reports/";
+"https://www.fsf.org/annual-reports/" -> "https://www.fsf.org/annual-reports/fy2017/" [label = ""] [fontcolor=darkgreen];
+"https://www.fsf.org/annual-reports/fy2017/";
+"https://www.fsf.org/annual-reports/fy2017/" -> "https://www.fsf.org/blogs/licensing" [label = "ongoing series of conversations with free software developers who choose GNU licenses for their work"] [fontcolor=darkgreen];
+"https://www.fsf.org/annual-reports/fy2017/" -> "https://www.fsf.org/blogs/licensing/you-can-now-register-as-a-dmca-agent-without-using-nonfree-javascript" [label = "create a workaround for"] [fontcolor=darkgreen];
+"https://www.fsf.org/annual-reports/fy2017/" -> "https://www.fsf.org/blogs/community/today-july-12th-day-of-action-for-net-neutrality" [label = "joined with dozens of other organizations to raise awareness and organize in support of net neutrality"] [fontcolor=darkgreen];
+"https://www.fsf.org/annual-reports/fy2017/" -> "https://www.fsf.org/about/free-software-foundation-privacy-policy" [label = "Privacy Policy"] [fontcolor=darkgreen];
+"https://www.fsf.org/about/free-software-foundation-privacy-policy";
+"https://www.fsf.org/about/free-software-foundation-privacy-policy" -> "https://www.fsf.org/about/free-software-foundation-privacy-policy/privacy-policy-changelog" [label = "Privacy Policy Changelog"] [fontcolor=darkgreen];
+"https://www.fsf.org/about/free-software-foundation-privacy-policy/privacy-policy-changelog";
+"https://www.fsf.org/about/free-software-foundation-privacy-policy/privacy-policy-changelog" -> "https://www.fsf.org/about/free-software-foundation-privacy-policy/free-software-foundation-privacy-policy-v1.0" [label = "https://www.fsf.org/about/free-software-foundation-privacy-policy/free-software-foundation-privacy-policy-v1.0"] [fontcolor=darkgreen];
+"https://www.fsf.org/about/free-software-foundation-privacy-policy/free-software-foundation-privacy-policy-v1.0";
+"https://www.fsf.org/blogs/community/today-july-12th-day-of-action-for-net-neutrality";
+"https://www.fsf.org/blogs/licensing/you-can-now-register-as-a-dmca-agent-without-using-nonfree-javascript";
+"https://www.fsf.org/blogs/licensing";
+"https://www.fsf.org/blogs/licensing" -> "https://www.fsf.org/blogs/licensing/fsd-meeting-recap-2024-10-25" [label = "FSD meeting recap 2024-10-25"] [fontcolor=darkgreen];
+"https://www.fsf.org/blogs/licensing" -> "https://www.fsf.org/blogs/licensing/fsd-meeting-recap-2024-10-18" [label = "FSD meeting recap 2024-10-18"] [fontcolor=darkgreen];
+"https://www.fsf.org/blogs/licensing" -> "https://www.fsf.org/blogs/licensing/fsd-meeting-recap-2024-10-11" [label = "FSD meeting recap 2024-10-11"] [fontcolor=darkgreen];
+"https://www.fsf.org/blogs/licensing" -> "https://www.fsf.org/blogs/licensing/fsd-meeting-recap-2024-01-26" [label = "FSD meeting recap 2024-01-26"] [fontcolor=darkgreen];
+"https://www.fsf.org/blogs/licensing" -> "https://www.fsf.org/blogs/licensing/fsd-meeting-recap-2023-12-29" [label = "FSD meeting recap 2023-12-29"] [fontcolor=darkgreen];
+"https://www.fsf.org/blogs/licensing" -> "https://www.fsf.org/blogs/licensing/fsd-meeting-recap-2023-12-22" [label = "FSD meeting recap 2023-12-22"] [fontcolor=darkgreen];
+"https://www.fsf.org/blogs/licensing" -> "https://www.fsf.org/blogs/licensing/licensing-compliance-lab-updates-and-why-we-need-your-support-to-educate-serve-the-free-software-community" [label = "Licensing & Compliance Lab updates and why we need your support to educate, serve the free software community"] [fontcolor=darkgreen];
+"https://www.fsf.org/blogs/licensing/licensing-compliance-lab-updates-and-why-we-need-your-support-to-educate-serve-the-free-software-community";
+"https://www.fsf.org/blogs/licensing/licensing-compliance-lab-updates-and-why-we-need-your-support-to-educate-serve-the-free-software-community" -> "https://www.fsf.org/blogs/licensing/protecting-free-software-against-confusing-additional-restrictions" [label = "blog post on protecting free software against confusing additional restrictions"] [fontcolor=darkgreen];
+"https://www.fsf.org/blogs/licensing/protecting-free-software-against-confusing-additional-restrictions";
+"https://www.fsf.org/blogs/licensing/protecting-free-software-against-confusing-additional-restrictions" -> "https://www.fsf.org/licensing/enforcement-principles" [label = "The Principles of Community-Oriented GPL Enforcement"] [fontcolor=darkgreen];
+"https://www.fsf.org/licensing/enforcement-principles";
+"https://www.fsf.org/licensing/enforcement-principles" -> "https://www.fsf.org/blogs/licensing/compliance-situations" [label = "the FSF"] [fontcolor=darkgreen];
+"https://www.fsf.org/licensing/enforcement-principles" -> "https://www.fsf.org/licensing/translations/97625411793e533a5b9e65bd-gpl-7684539f5219" [label = "Read this article in Chinese."] [fontcolor=darkgreen];
+"https://www.fsf.org/licensing/translations/97625411793e533a5b9e65bd-gpl-7684539f5219";
+"https://www.fsf.org/licensing/translations/97625411793e533a5b9e65bd-gpl-7684539f5219" -> "https://www.fsf.org/licensing/translations" [label = "Translations"] [fontcolor=darkgreen];
+"https://www.fsf.org/licensing/translations";
+"https://www.fsf.org/licensing/translations" -> "https://www.fsf.org/licensing/translations/20050211.de.html" [label = "Zensurneid und Nutzungserlaubnis"] [fontcolor=darkgreen];
+"https://www.fsf.org/licensing/translations/20050211.de.html";
+"https://www.fsf.org/blogs/licensing/compliance-situations";
+"https://www.fsf.org/blogs/licensing/fsd-meeting-recap-2023-12-22";
+"https://www.fsf.org/blogs/licensing/fsd-meeting-recap-2023-12-29";
+"https://www.fsf.org/blogs/licensing/fsd-meeting-recap-2024-01-26";
+"https://www.fsf.org/blogs/licensing/fsd-meeting-recap-2024-10-11";
+"https://www.fsf.org/blogs/licensing/fsd-meeting-recap-2024-10-18";
+"https://www.fsf.org/blogs/licensing/fsd-meeting-recap-2024-10-25";
+"https://www.fsf.org/about/fsf-relationship-framework";
+"https://www.fsf.org/about/fsf-bylaws";
+"https://www.fsf.org/about/contact/" [fontcolor=black] [color=red];
+"https://www.fsf.org/about/contact/" -> "https://www.fsf.org/about/contact/mailing" [label = "Mailing address and telephone/fax numbers"] [fontcolor=red] [color=red];
+"https://www.fsf.org/about/contact/" -> "https://www.fsf.org/about/contact/tour-2010" [label = "Virtually tour our previous office at 51 Franklin Street"] [fontcolor=darkgreen];
+"https://www.fsf.org/about/contact/tour-2010";
+"https://www.fsf.org/about/contact/tour-2010" -> "https://www.fsf.org/about/contact" [label = "Contact the Free Software Foundation"] [fontcolor=darkgreen];
+"https://www.fsf.org/about/contact";
+"https://www.fsf.org/about/contact/mailing" [fontcolor=black] [color=red];
+"https://www.fsf.org/about/contact/mailing" -> "https://www.fsf.org/about/ways-to-donate/" [label = "here"] [fontcolor=red] [color=red];
+"https://www.fsf.org/about/ways-to-donate/" [fontcolor=black] [color=red];
+"https://www.fsf.org/about/ways-to-donate/" -> "https://www.fsf.org/associate/car/" [label = "donating your car"] [fontcolor=darkgreen];
+"https://www.fsf.org/associate/car/";
+"https://www.fsf.org/associate/car/" -> "https://www.fsf.org/associate/gift" [label = "Gift a membership"] [fontcolor=darkgreen];
+"https://www.fsf.org/associate/car/" -> "https://www.fsf.org/associate/about-the-member-forum" [label = "More info"] [fontcolor=darkgreen];
+"https://www.fsf.org/associate/car/" -> "https://www.fsf.org/associate/contact.html" [label = "Contact us"] [fontcolor=darkgreen];
+"https://www.fsf.org/associate/contact.html";
+"https://www.fsf.org/associate/about-the-member-forum";
+"https://www.fsf.org/associate/gift";
+"https://www.fsf.org/associate/gift" -> "https://www.fsf.org/associate/benefits" [label = "benefits"] [fontcolor=darkgreen];
+"https://www.fsf.org/associate/benefits";
+"https://www.fsf.org/associate/benefits" -> "https://www.fsf.org/bulletin/" [label = "compact tri-color bulletin"] [fontcolor=darkgreen];
+"https://www.fsf.org/bulletin/";
+"https://www.fsf.org/bulletin/" -> "https://www.fsf.org/bulletin/2007/fall/" [label = "Issue 11 - Fall 2007"] [fontcolor=darkgreen];
+"https://www.fsf.org/bulletin/2007/fall/";
+"https://www.fsf.org/bulletin/2007/fall/" -> "https://www.fsf.org/bulletin/2007/fall/software-patents/" [label = "Software Patents Coalition by Ben Klemens"] [fontcolor=darkgreen];
+"https://www.fsf.org/bulletin/2007/fall/" -> "https://www.fsf.org/bulletin/2007/fall/antifeatures/" [label = "AntiFeatures by Benjamin Mako Hill"] [fontcolor=darkgreen];
+"https://www.fsf.org/bulletin/2007/fall/" -> "https://www.fsf.org/bulletin/2007/fall/gnu-affero-gpl/" [label = "GNU Affero GPL by Brett Smith"] [fontcolor=darkgreen];
+"https://www.fsf.org/bulletin/2007/fall/" -> "https://www.fsf.org/bulletin/2007/fall/rob-myers/" [label = "Interview with Rob Myers by Matt Lee"] [fontcolor=darkgreen];
+"https://www.fsf.org/bulletin/2007/fall/rob-myers/";
+"https://www.fsf.org/bulletin/2007/fall/rob-myers/" -> "https://www.fsf.org/bulletin/2007/fall" [label = "Fall 2007 Bulletin"] [fontcolor=darkgreen];
+"https://www.fsf.org/bulletin/2007/fall";
+"https://www.fsf.org/bulletin/2007/fall/gnu-affero-gpl/";
+"https://www.fsf.org/bulletin/2007/fall/antifeatures/";
+"https://www.fsf.org/bulletin/2007/fall/software-patents/";
 }

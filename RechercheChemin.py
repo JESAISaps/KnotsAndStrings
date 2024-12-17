@@ -41,20 +41,22 @@ def CheminToGo(G, d, a):
         raise Warning("Pas de chemin trouvé.")
     return ReconstruireChemin(d,a, links)
 
-def PrintCreateGPS(graph, chemin:list) -> None:
+def PrintCreateGPS(graph, depart, arrivee) -> None:
     #print(f"Graph: {graph}")
+    chemin = CheminToGo(G, depart, arrivee)
     print(f"Depart, vous apparaissez dans le monde, voila comment sortir: ")
     for i in range(len(chemin)-1):
         print(ASSODIRECTIONNOMBRE[dict(graph[chemin[i]][1])[chemin[i+1]]]) # On va chercher la position du prochain noeud dans le graphe, tres neste.
-    #print("Sorti !")
+    print("Sorti !")
 
 def CreateGPS(graph, chemin:list) -> str:
     rep = ""
     rep += f"Depart, vous apparaissez dans le monde, voila comment sortir:"
     for i in range(len(chemin)-1):
         rep += f"\n{ASSODIRECTIONNOMBRE[dict(graph[chemin[i]][1])[chemin[i+1]]]}" # On va chercher la position du prochain noeud dans le graphe, tres neste.
-    #print("Sorti !")
     return rep
+
+
 
 def test():
     flag = True
@@ -67,7 +69,7 @@ def test():
     return flag
 
 def StartWithPipe():
-    PrintCreateGPS(G, CheminToGo(G, 0, 4))
+    PrintCreateGPS(G, 0, 4)
 
 if __name__ == "__main__":
     assert test()

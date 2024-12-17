@@ -1,6 +1,6 @@
 Doctests for KnotsAndStrings program
 
-    Import du graph pour les tests
+    Import du graph pour les tests, et du numero de la case d'arrivee virtuelle
 >>> from utils import G, VIRTUALEXITNUMBER
 
 -----------
@@ -15,6 +15,7 @@ Tests de Reconstruire Chemin:
 [0, 3]
 >>> ReconstruireChemin(3,1,{(6,1),(1,5),(5,3),(3,0)})
 [3, 5, 1]
+
 
 
 -----------
@@ -55,9 +56,11 @@ Test de CreateGraphWithUniqueExit:
 >>> CreateGraphWithUniqueExit({0:("", [(1,"")]), 1:("",[])}) == {0:("", [(1,"")]), 1:("",[(VIRTUALEXITNUMBER,"To Virtual Exit")]), VIRTUALEXITNUMBER:("Virtual Exit", [])}
 True
 
+Graph avec un seul sommet
 >>> CreateGraphWithUniqueExit({0:("",[])}) == {0:("", [(VIRTUALEXITNUMBER,"To Virtual Exit")]), VIRTUALEXITNUMBER:("Virtual Exit", [])}
 True
 
+Graph vide
 >>> CreateGraphWithUniqueExit({}) == {VIRTUALEXITNUMBER: ('Virtual Exit', [])}
 True
 

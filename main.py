@@ -1,17 +1,16 @@
 import doctest
-import json
 import webbrowser
-from utils import GetGraphInData, DOTPATH
+from utils import GetGraphInData, DOTPATH, accessiblecheminsJickstra, accessiblechemins
 from CreationCarte import CreerCarteAvecChemin, CreerCarteVisite
 from SortieRatee import GetImpossibleExits, GetPossibleExits
-from RechercheChemin import accessiblechemins
 from BaladeLabyrinthe import visite
 from EditeurLabyrinteV2 import StartCreation
+from RechercheChemin import PrintCreateGPS
 import graphviz
 
 
 
-def ShowLabyrinth(graphName:str, start:int=None, end:int=None):
+def ShowLabyrinth(graphName:str, start:int=None, end:int=None, useJickstra:bool=False, useCost:bool=False):
     """
     Crée le dot du labyrinthe et l'affiche.
     Si start et end sont donnés, alors on met le chemin en rouge.
@@ -24,7 +23,7 @@ def ShowLabyrinth(graphName:str, start:int=None, end:int=None):
             case None, None:
                 CreerCarteVisite(graph, file)
             case int(), int():
-                CreerCarteAvecChemin(graph, file, start, end)
+                CreerCarteAvecChemin(graph, file, start, end, useJickstra, useCost)
             case _:
                 raise AttributeError("Il faut donner un depart et une fin, ou rien du tout.")
 
@@ -36,6 +35,10 @@ def ShowLabyrinth(graphName:str, start:int=None, end:int=None):
 def CallAccessibles(graphName:str, entree):
     graph = GetGraphInData(graphName)
     print(accessiblechemins(graph, entree))
+
+def CallAccessiblesJidstrka(graphName:str, entree):
+    graph = GetGraphInData(graphName)
+    print(accessiblecheminsJickstra(graph, entree))
 
 def SortieImpossible(graphName:str):    
     graph = GetGraphInData(graphName)
@@ -52,22 +55,29 @@ def CallVisite(graphName:str, entree:int):
 def CallEditeur():
     StartCreation()
 
+def CallGPS(graphName:str, entree, sortie):
+    graph = GetGraphInData(graphName)
+    PrintCreateGPS(graph, entree, sortie)
 
 if __name__ == "__main__":
     doctest.testfile("doctest.txt")
     #g = GetGraphInData("g")
     #print(GetImpossibleExits(g))
-    
+
     # 1
-    #CallVisite("g", 0)
+    CallVisite("fsf", 1)
 
     # 2
-    CallAccessibles("g", 0)
+    #CallAccessibles("fsf", 1)
+    #CallAccessiblesJidstrka("fsf", 1)
+    
+    # 2.1
+    #CallGPS("fsf", 1, 37)
 
     # Pour le piping: 'python RechercheChemin.py pipe | python BaladeLabyrinthe.py pipe'
 
     # 3
-    #ShowLabyrinth("g", 0, 6)
+    #ShowLabyrinth("fsf", 1, 37, True)
 
     # 4
     #SortieImpossible("g")
@@ -79,4 +89,4 @@ if __name__ == "__main__":
     #CallEditeur()
 
     # Jijdlrstra:
-    # TODO
+    # Sous l'autre.

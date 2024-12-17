@@ -1,4 +1,4 @@
-from utils import ASSODIRECTIONNOMBRE, successeurs
+from utils import ASSODIRECTIONNOMBRE, ASSONOMBREDIRECTION, successeurs
 from colorama import Fore
 from sys import argv
 
@@ -16,6 +16,11 @@ def creerDicoLiens(listechoix:list[tuple[int, str]]) -> dict[str, list[tuple[int
     """
     dico={}
     for element in listechoix:
+        if element[1] not in ASSODIRECTIONNOMBRE.keys():
+            newValueIndex = max(ASSONOMBREDIRECTION.keys()) +1
+            ASSODIRECTIONNOMBRE[element[1]] = newValueIndex
+            ASSONOMBREDIRECTION[newValueIndex] = element[1]
+
         dico[ASSODIRECTIONNOMBRE[element[1]]]= element
     return dico
 
@@ -25,12 +30,15 @@ def creerChaineAfficherEtiquettesAvecNumero(dicoLiens) -> str:
     created by creerDicoLiens
     """
     chaine = "Chemins possibles : \n"
-    listechaine=[]
+    listechaine:list[str]=[]
     for key in dicoLiens:
         listechaine.append(f'{key} : {dicoLiens[key][1]}\n')
-    listechaine.sort(key=lambda s :s[0])
+    listechaine.sort()
     for element in listechaine:
-        chaine+= f"{Fore.RED}{element[0]}{Fore.WHITE}{element[1:]}"
+        listeElement = element.split(' ')
+        listeElement[0] = f"{Fore.RED}{listeElement[0]}{Fore.WHITE}"
+        chaine += " ".join(listeElement)
+        #chaine+= f"{Fore.RED}{element[0]}{Fore.WHITE}{element[1:]}"
     return chaine
 
 def visite(graphe,entree) -> None:
@@ -56,7 +64,7 @@ def visite(graphe,entree) -> None:
         caseActuelle = dicoliens[int(choix)][0]
         choix=""
 
-    return "Bravo"
+    print("Bravo, vous êtes sorti du Labyrinthe !")
 
 def StartWithPipe():
     print(visite(G, 0))

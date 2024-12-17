@@ -1,11 +1,11 @@
-from utils import DOTPATH, GetGraphInData
-from RechercheChemin import accessiblechemins, ReconstruireCheminAsTuples
+from utils import DOTPATH, GetGraphInData, accessiblechemins, accessiblecheminsJickstra
+from RechercheChemin import ReconstruireCheminAsTuples
 
 def CreateLineInDot(gauche,droite,etiquette,listekeysrouge):
     if (gauche, droite) in listekeysrouge:
-        text = f'"{gauche}" -> "{droite}" [label = "{etiquette}"] [fontcolor=red] [color=red]'
+        text = f'"{gauche}" -> "{droite}" [label = "{etiquette}"] [fontcolor=red] [color=red];'
     else : 
-        text = f'"{gauche}" -> "{droite}" [label = "{etiquette}"] [fontcolor=darkgreen]'
+        text = f'"{gauche}" -> "{droite}" [label = "{etiquette}"] [fontcolor=darkgreen];'
     return text 
 
 def CreerCarteVisite(graph,fichier):
@@ -20,8 +20,20 @@ def CreerCarteVisite(graph,fichier):
             fichier.write("\n")
     fichier.write("}")
 
-def CreerCarteAvecChemin(graph,fichier, entree, sortie):
-    listarcs=[(graph[k][0], graph[v][0]) for k,v in ReconstruireCheminAsTuples(entree, sortie, accessiblechemins(graph,entree)[1])]
+def CreerCarteAvecChemin(graph,fichier, entree:int, sortie:int, useJickstra:bool=False, useCost:bool=False):
+    """
+    Ecrit dans le fichier en arg le dot du graph.\n
+    Tous les arguments suivants sont optionels, mais on ne peut pas en donner un sans donner ceux d'avant.\n
+    'entree' et 'sorties' sont utilisé si on veut tracer un chemin en rouge.\n
+    useJickstra est utilisé si on veut calculer le chemin a l'aide de Jickstra,\n
+    et useCost si on a specifié les couts des chemins dans le graph.
+    """
+
+    listarcs=[(graph[k][0], graph[v][0]) for k,v in ReconstruireCheminAsTuples (
+        entree, sortie, 
+        accessiblecheminsJickstra(graph,entree, useCost)[1] if useJickstra else accessiblechemins(graph, entree)[1]
+        )
+        ]
     listechemin = [arc[0] for arc in listarcs]
     fichier.write("digraph g{ \n")
     for key in graph:
