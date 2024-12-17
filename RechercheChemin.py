@@ -1,4 +1,4 @@
-from utils import ASSODIRECTIONNOMBRE, accessiblechemins, G
+from utils import ASSODIRECTIONNOMBRE, accessiblechemins, G, accessiblecheminsJickstra, ASSONOMBREDIRECTION, GetGraphInData
 from sys import argv
 
 isPiping = False
@@ -35,7 +35,7 @@ def CheminToGo(G, d, a):
     """
     Retourne la liste des cles des sommets du graph G pour aller du sommet d au sommet a
     """
-    accessibleVerticises, links = accessiblechemins(G, d)
+    accessibleVerticises, links = accessiblecheminsJickstra(G, d)
     #print(accessibleVerticises)
     if a not in accessibleVerticises:
         raise Warning("Pas de chemin trouvé.")
@@ -43,10 +43,23 @@ def CheminToGo(G, d, a):
 
 def PrintCreateGPS(graph, depart, arrivee) -> None:
     #print(f"Graph: {graph}")
-    chemin = CheminToGo(G, depart, arrivee)
+    chemin = CheminToGo(graph, depart, arrivee)
     print(f"Depart, vous apparaissez dans le monde, voila comment sortir: ")
-    for i in range(len(chemin)-1):
-        print(ASSODIRECTIONNOMBRE[dict(graph[chemin[i]][1])[chemin[i+1]]]) # On va chercher la position du prochain noeud dans le graphe, tres neste.
+    startingIndex = 0
+    try:
+        graph[0]
+    except KeyError:
+        startingIndex = 1
+    for i in range(startingIndex, len(chemin)-1):
+        element = dict(graph[chemin[i]][1])[chemin[i+1]]
+        
+        # Pas parfait mais fais le taf pour les graphs incompatibles.
+        if element not in ASSODIRECTIONNOMBRE.keys():        
+            newValueIndex = max(ASSONOMBREDIRECTION.keys()) +1        
+            ASSODIRECTIONNOMBRE[element] = newValueIndex        
+            ASSONOMBREDIRECTION[newValueIndex] = element
+            
+        print(ASSODIRECTIONNOMBRE[element]) # On va chercher la position du prochain noeud dans le graphe, tres neste.
     print("Sorti !")
 
 def CreateGPS(graph, chemin:list) -> str:
@@ -69,7 +82,7 @@ def test():
     return flag
 
 def StartWithPipe():
-    PrintCreateGPS(G, 0, 4)
+    PrintCreateGPS(GetGraphInData(argv[2]), int(argv[3]), int(argv[4]))
 
 if __name__ == "__main__":
     assert test()

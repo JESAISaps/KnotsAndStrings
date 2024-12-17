@@ -1,5 +1,6 @@
 from copy import deepcopy
 from utils import accessiblechemins, VIRTUALEXITNUMBER
+
 if __name__ == "__main__":
     from utils import G
 
@@ -38,6 +39,10 @@ def GetPossibleExits(graph):
     newGraph = CreateGraphWithUniqueExit(graph)
 
     return set.difference(accessiblechemins(MirrorGraph(newGraph), VIRTUALEXITNUMBER)[0], {VIRTUALEXITNUMBER})
+
+def GetPossibleExitsByName(graph):
+    exits = GetPossibleExits(graph)
+    return {graph[sommet][0] for sommet in exits}
 
 
 def GetImpossibleExits(graph):

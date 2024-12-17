@@ -2,12 +2,11 @@ import doctest
 import webbrowser
 from utils import GetGraphInData, DOTPATH, accessiblecheminsJickstra, accessiblechemins
 from CreationCarte import CreerCarteAvecChemin, CreerCarteVisite
-from SortieRatee import GetImpossibleExits, GetPossibleExits
+from SortieRatee import GetImpossibleExits, GetPossibleExitsByName, GetExits
 from BaladeLabyrinthe import visite
 from EditeurLabyrinteV2 import StartCreation
 from RechercheChemin import PrintCreateGPS
 import graphviz
-
 
 
 def ShowLabyrinth(graphName:str, start:int=None, end:int=None, useJickstra:bool=False, useCost:bool=False):
@@ -42,11 +41,15 @@ def CallAccessiblesJidstrka(graphName:str, entree):
 
 def SortieImpossible(graphName:str):    
     graph = GetGraphInData(graphName)
-    print(GetImpossibleExits(graph))
+    print(f"Sortie impossible par les sommets suivants : {GetImpossibleExits(graph)}")
 
 def SortiePossible(graphName:str):
     graph = GetGraphInData(graphName)
-    print(GetPossibleExits(graph))
+    print(f"Sortie possible par les sommet suivants : {GetPossibleExitsByName(graph)}")
+
+def SortiesGraph(graphName:str):
+    graph = GetGraphInData(graphName)
+    print(f"Les sorties du graph {graphName} sont : {GetExits(graph)}")
 
 def CallVisite(graphName:str, entree:int):
     graph = GetGraphInData(graphName)
@@ -61,11 +64,9 @@ def CallGPS(graphName:str, entree, sortie):
 
 if __name__ == "__main__":
     doctest.testfile("doctest.txt")
-    #g = GetGraphInData("g")
-    #print(GetImpossibleExits(g))
 
     # 1
-    CallVisite("fsf", 1)
+    #CallVisite("fsf", 1)
 
     # 2
     #CallAccessibles("fsf", 1)
@@ -74,19 +75,24 @@ if __name__ == "__main__":
     # 2.1
     #CallGPS("fsf", 1, 37)
 
-    # Pour le piping: 'python RechercheChemin.py pipe | python BaladeLabyrinthe.py pipe'
+    # Pour le piping: 'python RechercheChemin.py pipe g 0 6| python BaladeLabyrinthe.py pipe g 0'
+    # /!\ -> Le piping ne fonctionne pas sur les graphs qui ne suivent pas la convention nord-sud ... pour les directions,
+    # a cause de gps qui doit aller chercher ce que l'utilisateur doit entrer pour donner un bon gps. Les contextes etants
+    # differents, les numeros a saisir sont differents.
 
     # 3
     #ShowLabyrinth("fsf", 1, 37, True)
 
     # 4
-    #SortieImpossible("g")
-    #SortiePossible("g")
+    #SortieImpossible("fsf")
+    #SortiePossible("fsf")
+    #SortiesGraph("fsf")
 
     # ++
 
     # Editeur
     #CallEditeur()
 
-    # Jijdlrstra:
-    # Sous l'autre.
+    # Parler de json
+    # Géré en parti les graphs incompatibles
+    # Géré la colab avec GIT

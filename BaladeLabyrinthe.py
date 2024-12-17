@@ -1,4 +1,4 @@
-from utils import ASSODIRECTIONNOMBRE, ASSONOMBREDIRECTION, successeurs
+from utils import ASSODIRECTIONNOMBRE, ASSONOMBREDIRECTION, successeurs, GetGraphInData
 from colorama import Fore
 from sys import argv
 
@@ -17,7 +17,7 @@ def creerDicoLiens(listechoix:list[tuple[int, str]]) -> dict[str, list[tuple[int
     dico={}
     for element in listechoix:
         if element[1] not in ASSODIRECTIONNOMBRE.keys():
-            newValueIndex = max(ASSONOMBREDIRECTION.keys()) +1
+            newValueIndex = max(ASSONOMBREDIRECTION.keys()) + 1
             ASSODIRECTIONNOMBRE[element[1]] = newValueIndex
             ASSONOMBREDIRECTION[newValueIndex] = element[1]
 
@@ -26,8 +26,8 @@ def creerDicoLiens(listechoix:list[tuple[int, str]]) -> dict[str, list[tuple[int
 
 def creerChaineAfficherEtiquettesAvecNumero(dicoLiens) -> str:
     """
-    Returns formated string from dict of links
-    created by creerDicoLiens
+    Returne une chaine de caractere formatée pour l'affichage
+    dicoLiens créé par creerDicoLiens
     """
     chaine = "Chemins possibles : \n"
     listechaine:list[str]=[]
@@ -71,6 +71,6 @@ def StartWithPipe():
 
 if __name__ == "__main__":
     if isPiping: #ne jamais modifier le contenu du if sauf si modification du piping
-        print(visite(G,0))
+        print(visite(GetGraphInData(argv[2]), int(argv[3])))
     else : 
         print(visite(G,0))
